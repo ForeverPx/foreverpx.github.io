@@ -109,8 +109,8 @@
           
           
             
-              <a class="post-title-link" href="/2014/09/28/初识ServiceWorker/">
-                初识ServiceWorker
+              <a class="post-title-link" href="/2014/09/20/Grunt2/">
+                Grunt入门教程之（二）
               </a>
             
           
@@ -119,93 +119,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-09-28
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/html5/">html5</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p><a href="http://www.foreverpx.cn/2014/09/28/初识ServiceWorker">初识ServiceWorker</a></p>
-<p>在8月份的时候，W3C更新了一个叫<a href="http://www.w3.org/TR/2014/WD-service-workers-20140508/#introduction">Service Workers</a>的API。</p>
-<p>了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/28/初识ServiceWorker/#more">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Chrome/"> #Chrome </a>
-          
-            <a href="/tags/Html5/"> #Html5 </a>
-          
-            <a href="/tags/ServiceWorkers/"> #ServiceWorkers </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/09/25/Hexo免输入密码部署到github/">
-                Hexo免输入密码部署到github
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-09-25
+          發表於 2014-09-20
         </span>
 
         
@@ -234,11 +148,13 @@
 
       
         
-          <p><a href="http://www.foreverpx.cn/2014/09/25/Hexo免输入密码部署到github">Hexo免输入密码部署到github</a></p>
-<p>在使用(hexo d)命令部署hexo到github时，每次都要输入用户名和密码，这会使得你预览你博客的修改显得更加繁琐。下面的方法将使你摆脱这种痛苦。</p>
-<p>首先，在系统环境变量中设置一个环境变量</p>
+          <p>​## Grunt入门教程之二 </p>
+<h3 id="Concat插件">Concat插件</h3><p>​concat是grunt中用来做文件连接的常用插件，比如说你写了一个类库，有三大模块，如：<br>        a.js<br>        b.js<br>        c.js<br>当你的项目准备发布的时候，你可能需要将这三个模块合并成一个大的模块all.js，这样做可以减少HTTP请求，增快页面的响应速度。</p>
+<p>如果我们每次发布的时候又要连接这三个模块，并测试all.js，确保大模块无BUG之后再发布，就显得很蛋疼了。一种好的方式是，每当你修改了其中一个小模块，他都会自动连接成all.js，并且你的项目在开发的时候也是引用all.js,那就可以避免上面的问题了。</p>
+<p>这个时候我们就需要一个自动连接js文件的自动化工具，基于grunt的话，那就是concat插件了。<br>下面介绍一下使用concat的几种形式</p>
+<h3 id="1-多个文件合并成一个文件">1.多个文件合并成一个文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;    </span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"XXX"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.1.0"</span>,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"grunt"</span>: <span class="string">"~0.4.2"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-jshint"</span>: <span class="string">"~0.6.3"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-nodeunit"</span>: <span class="string">"~0.2.0"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-uglify"</span>: <span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-less"</span>: <span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-concat"</span>:<span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-yuidoc"</span>: <span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-cssmin"</span>:<span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-watch"</span>:<span class="string">"*"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/25/Hexo免输入密码部署到github/#more">
+            <a class="btn" href="/2014/09/20/Grunt2/#more">
               閱讀全文 &raquo;
             </a>
           </div>
@@ -250,9 +166,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Github/"> #Github </a>
+            <a href="/tags/Grunt/"> #Grunt </a>
           
-            <a href="/tags/Hexo/"> #Hexo </a>
+            <a href="/tags/Javascript/"> #Javascript </a>
+          
+            <a href="/tags/单元测试/"> #单元测试 </a>
+          
+            <a href="/tags/自动化/"> #自动化 </a>
           
         </div>
       
@@ -279,8 +199,8 @@
           
           
             
-              <a class="post-title-link" href="/2014/09/23/hexo404/">
-                HEXO 指定404页面
+              <a class="post-title-link" href="/2014/09/19/Grunt1/">
+                Grunt入门教程之（一）
               </a>
             
           
@@ -289,7 +209,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-09-23
+          發表於 2014-09-19
         </span>
 
         
@@ -318,184 +238,15 @@
 
       
         
-          <p><a href="http://www.foreverpx.cn/2014/09/23/hexo404">HEXO 指定404页面</a></p>
-<p>由于Hexo托管于github，所以加404页面非常容易，只需要在xxx.github.io下面新建一个404页面即可。代码如下：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/23/hexo404/#more">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
+          <p>​## Grunt入门教程之一 </p>
+<h3 id="基本流程搭建">基本流程搭建</h3><p>​grunt是一个强大的自动化构建工具，它能自动的执行你自定义的任务，帮助你编译、压缩、单元测试等。它可以极大的减轻作为程序员的工作量。一切无聊枯燥且重复的工作就交给grunt来完成吧！<br>​grunt中有非常多的插件，有官方的可以直接使用，如果你觉得这还不够，你可以自己亲自写一个插件，将其发布到npm上。<br>​常用的grunt插件有：<br>    ​Less<br>    handlebars<br>    jade<br>    JS Hint<br>    watch</p>
+<p>​下面我们就以less为例，来看看如何使用grunt来把less编译为css并压缩。<br>​首先我们要通过npm安装grunt命令行（CLI）到全局变量中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">npm install -g grunt-cli</span><br><span class="line">``` </span><br><span class="line">	</span><br><span class="line">CLI安装完成后，就可以建一个grunt项目来跑了。</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">​新建一个grunt文件夹，在grunt中新建package.json和Gruntfile.js文件。</span><br><span class="line">​package.json为配置信息，里面可以配置需要导入的插件和一些变量或常量。</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">&#123;    </span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"XXX"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"0.1.0"</span>,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"grunt"</span>: <span class="string">"~0.4.2"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-jshint"</span>: <span class="string">"~0.6.3"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-nodeunit"</span>: <span class="string">"~0.2.0"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-uglify"</span>: <span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-less"</span>: <span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-concat"</span>:<span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-yuidoc"</span>: <span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-cssmin"</span>:<span class="string">"*"</span>,</span><br><span class="line">    <span class="string">"grunt-contrib-watch"</span>:<span class="string">"*"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Gruntfile.js为任务的配置，可以理解为程序的主入口。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">        less: &#123;</span><br><span class="line">            compile: &#123;</span><br><span class="line">                files: &#123;</span><br><span class="line">                    <span class="string">'a.less'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        cssmin:&#123;</span><br><span class="line">            minify: &#123;</span><br><span class="line">                expand: <span class="literal">true</span>,</span><br><span class="line">                src: [<span class="string">'a.css'</span>],</span><br><span class="line">                dest: <span class="string">''</span>,</span><br><span class="line">                ext: <span class="string">'.min.css'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        watch: &#123;</span><br><span class="line">            css: &#123;</span><br><span class="line">                files: [<span class="string">'/*.less'</span>],</span><br><span class="line">                tasks: [<span class="string">'less'</span>,<span class="string">'cssmin'</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-contrib-less'</span>);</span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-contrib-cssmin'</span>);</span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-contrib-watch'</span>);</span><br><span class="line">    </span><br><span class="line">    grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'less'</span>,<span class="string">"cssmin"</span>,<span class="string">"watch"</span>]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>​在当前目录下，命令行输入 grunt 就能开始执行 less,cssmin,watch任务。<br>​下面讲解一下上面的代码。<br>​首先我们配置了less插件，并指定将a.less编译成a.css并保存在当前的目录，接着是配置了cssmin插件，将上一步生成的a.css文件进行压缩，生成a.min.css文件。我们需要的就是最终生成的那个a.min.css文件。<br>​下面来看一下神奇的watch插件。我们在项目开发中，不可能每修改一次a.less，都手动去执行命令grunt。所以我们需要一个监听文件改变的东东，它就是watch。我们在配置中，用watch插件监听当前目录下，所有的less文件，只要有改动，就会再次执行 less 和 cssmin插件。是不是很方便？<br>​上面是使用grunt最简单的一个例子，后面的文章会对grunt的更多特性以及插件做更详细的讲解。</p>
+<p>文章作者：forevercjl<br>文章原文链接：<a href="http://blog.csdn.net/forevercjl/article/details/38590305" target="_blank" rel="external">Grunt入门教程之一 </a></p>
 
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Hexo/"> #Hexo </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/09/23/tech-free/">
-                凯文·凯利:技术想要免费
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-09-23
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/live/">live</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>译者： Fz 2010年11月25日 14:26 原作者： Kevin Kelly</p>
-<p>在去年二月TED大会的空隙，我和《连线》的现任主编克里斯·安德森聊了会他的新书，叫做《免费》。差不多10年前，我在拙作《新经济的新法则》（New Rules for the New Economy）中写过一章关于免费和富足经济（economics of plentitude）作用的文字。我给那一章起名叫做《跟随免费》。在我写过的所有文章里，没有任何一篇会比这短短的几段文字更能让人误解。从那以后，这样的问题一直伴随着我：“您说我们应当拥抱免费。但怎么可能所有的东西都免费？”</p>
-<p>实际上，免费的概念很好理解。因此我要为克里斯在整本书中，为解开免费谜团的句句妙言击节喝彩。关于免费我们有太多要谈，即便如此，我们也不过刚刚开始理解免费意味着什么。我本以为我在10年前就结束了这个课题。然而，在这10年中不断涌现的问题，连同持续的社会进化，以及新的社会动态和新技术所带来的瓦解，还有其他更深层次的研究结合在一起，令我产生了新的想法，特别是我对免费已经在技术当中根深蒂固的论断。在TED的大厅里，我和克里斯一道分享了这些不成熟的想法。在大会结束后我发现，技术和免费之间的联系比我想象的更为深远。现在，我的结论可以用一句话概括：技术想要免费。</p>
-<p>让我说得更具体一些：随着时间的流逝，函数中特定技术消耗的成本将会下降。如果这个函数持续得足够长，那么技术所消耗的成本就无限趋近于零。在相当长的一段时间后，任何一种技术费用的函数都会以接近于免费的方式继续下去。</p>
-<p>这点似乎在我们创造的所有东西上都能适用——比方说食品和商品这类基础事物，或者更为复杂的机械，甚至服务这种无形的产品。上述这些产品的平均成本已经随着时间出现了下降，特别是在工业革命之后。根据2002年国际货币基金组织发布的一份报告（名为《商品价格的长期行为》，The Long-Run Behavior of Commodity Prices，Paul Cashin及C. John McDemott合著），“在过去140年中，商品价格已经出现了每年下降1%的趋势。”在一个半世纪的时间里面，价格已经向零前进了。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/23/tech-free/#more">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/互联网/"> #互联网 </a>
-          
-            <a href="/tags/商业/"> #商业 </a>
-          
-            <a href="/tags/智能硬件/"> #智能硬件 </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/09/23/Grunt3/">
-                Grunt入门教程之（三）
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-09-23
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/frontend/">frontend</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>​### Grunt入门教程之三</p>
-<h3 id="Yuidoc插件">Yuidoc插件</h3><p>Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。</p>
-<p>我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。</p>
-<p>下面介绍一下如何在Grunt中使用Yuidoc。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/09/23/Grunt3/#more">
-              閱讀全文 &raquo;
-            </a>
-          </div>
         
       
     </div>
@@ -530,7 +281,7 @@
 
   
   <div class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
   </div>
 
 
