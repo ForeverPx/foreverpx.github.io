@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Javascript,NodeJs," />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> 模块导致CPU占用高的问题 // Foreverpx </title>
+  <title> Select2插件IE下autofocus的解决方法 // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              模块导致CPU占用高的问题
+              Select2插件IE下autofocus的解决方法
             
           
         </h1>
@@ -125,7 +125,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-05-21
+          發表於 2015-08-11
         </span>
 
         
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/"></span>
+            <a href="/2015/08/11/Select2插件 IE下 autofocus bug的解决方法/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/11/Select2插件 IE下 autofocus bug的解决方法/"></span>
             </a>
           </span>
           
@@ -160,20 +160,15 @@
       
 
       
-        <h1 id="Nodejs_mkdirP_模块导致CPU占用高的问题">Nodejs mkdirP 模块导致CPU占用高的问题</h1><p>近期将nodejs项目部署到服务器上并启动时，发现node进程的cpu占用率在40%左右，当时表示非常不解，刚启动的服务并没有运行什么需要大量消耗cpu的逻辑，且此时还未有请求发送到服务器端。</p>
-<p>鉴于这种情况，只能猜测是某段程序在初始化一些东西的时候异常，所以才导致了这种情况。</p>
-<p>经过对代码的排查后，最终锁定出为题的代码块如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">router.use(multer(&#123;</span><br><span class="line">    dest: config.uploadDir,</span><br><span class="line">    limits:&#123;</span><br><span class="line">        fileSize : config.fileSizeLimit, <span class="comment">//bytes , == 50M</span></span><br><span class="line">        files : <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rename:<span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uuid.v1() + <span class="string">"_"</span> + filename + <span class="string">"_"</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;,</span><br><span class="line">    onFileUploadStart: <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(file.originalname + <span class="string">' is starting ...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onError: <span class="function"><span class="keyword">function</span> (<span class="params">error, next</span>) </span>&#123;</span><br><span class="line">        winston.error(error);</span><br><span class="line">        next(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+        <h2 id="描述：">描述：</h2><p>Select2插件在IE中，当页面加载完毕后会自动的focus，弹出本来应该点击input才会有个提示语。</p>
+<h2 id="原因：">原因：</h2><p>在select2的源码中第1849行左右，有一段监听input事件的代码，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$selection.on(<span class="string">'keyup.search input'</span>, <span class="string">'.select2-search--inline'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">      self.handleSearch(evt);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以看到这里是使用HTML5的input事件去监听input中值的变化的，并没有使用传统的change或者keydown等事件。</p>
 <a id="more"></a>
-<p>初看这段代码怎么也不相信它会占用这么高的CPU，所以最大的嫌疑就是multer模块的初始化了，于是进入源码看看。</p>
-<p>multer初始化部分源码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (options.dest) &#123;</span><br><span class="line">  dest = options.dest;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  dest = os.tmpdir();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mkdirp(dest, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123; <span class="keyword">if</span> (err) <span class="keyword">throw</span> err; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rename = options.rename || <span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> random_string = fieldname + filename + <span class="built_in">Date</span>.now() + <span class="built_in">Math</span>.random();</span><br><span class="line">  <span class="keyword">return</span> crypto.createHash(<span class="string">'md5'</span>).update(random_string).digest(<span class="string">'hex'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码最有嫌疑的不是mkdirP（创建目标文件夹）就是crypto的md5了，那么一个一个排除。首先只是注释掉mkdirP，重启node，发现cpu基本为0了，所以能断定问题出在mkdirP上了。</p>
-<p>单凭这句<strong>mkdirp(dest, function(err) { if (err) throw err; });</strong>也看不出什么东西，所以还是得继续进入mkdirP的实现。</p>
-<p>mkdirP在创建文件夹的源码中有这么一段：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mkdirP</span> (<span class="params">p, mode, f, made</span>) </span>&#123;</span><br><span class="line">	<span class="comment">//此处省略几行</span></span><br><span class="line">	fs.mkdir(p, mode, <span class="function"><span class="keyword">function</span> (<span class="params">er</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!er) &#123;</span><br><span class="line">            made = made || p;</span><br><span class="line">            <span class="keyword">return</span> cb(<span class="literal">null</span>, made);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">switch</span> (er.code) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'ENOENT'</span>:</span><br><span class="line">                mkdirP(path.dirname(p), mode, <span class="function"><span class="keyword">function</span> (<span class="params">er, made</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (er) cb(er, made);</span><br><span class="line">                    <span class="keyword">else</span> mkdirP(p, mode, cb, made);</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                fs.stat(p, <span class="function"><span class="keyword">function</span> (<span class="params">er2, stat</span>) </span>&#123;</span><br><span class="line">             </span><br><span class="line">                    <span class="keyword">if</span> (er2 || !stat.isDirectory()) cb(er, made)</span><br><span class="line">                    <span class="keyword">else</span> cb(<span class="literal">null</span>, made);</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>看到case ‘ENOENT’时就有点端倪了，在创建文件夹失败后，又调了mkdirP，这样如果第一次出问题了，那不就不停的尝试创建了。如果是这样，那么肯定是传入的路径出了问题。回头检查config里面的路径时，发现路径在部署配置的时候斜杠的方向写反了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.path = <span class="string">'c:\aa\aa'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>正确的应该是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">config.path = <span class="string">'c:\\aa\\aa'</span>;</span><br><span class="line">or</span><br><span class="line">config.path = <span class="string">'c://aa//aa'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>几经周折终于解决了问题，nodejs的路还很长，走，吃饭去……</p>
-<p>文章作者：forevercjl<br>文章原文链接：<a href="http://blog.csdn.net/ForeverCjl/article/details/45895795" target="_blank" rel="external">http://blog.csdn.net/ForeverCjl/article/details/45895795</a><br>转载请注明出处。</p>
+<p>原因就出在这里，input事件在IE中是有bug的。在IE中，如果一个input带有placeholder属性，那么IE会自动触发这个input的input事件，而这是在其他浏览器中不会发生的。</p>
+<h2 id="解决方案">解决方案</h2><p>写一个对于IE的兼容性方法，在判断为IE的时候将input事件替换为keydown事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var isIE = (function () &#123;&#10;    var ua = window.navigator.userAgent.toLowerCase();&#10;    if (ua.indexOf(&#34;msie&#34;) &#62; 0 || ua.indexOf(&#34;trident&#34;) &#62; 0 ) &#123;&#10;        return true;&#10;    &#125;&#10;&#10;    else &#123;&#10;        return false;&#10;    &#125;&#10;&#10;&#125;());&#10;&#10;var input_event = !isIE ? &#39;input&#39; : &#39;keydown&#39;;&#10;&#10;this.$selection.on(&#39;keyup.search &#39;+input_event, &#39;.select2-search--inline&#39;,function (evt) &#123;&#10;      self.handleSearch(evt);&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>文章作者：forevercjl<br>文章原文csdn链接：<a href="http://www.foreverpx.cn/2015/07/02/Fastclick%E5%AF%BC%E8%87%B4click%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E4%B8%A4%E6%AC%A1%E7%9A%84%E9%97%AE%E9%A2%98/">www.foreverpx.cn</a><br>转载请注明出处。</p>
 
       
     </div>
@@ -184,8 +179,6 @@
           
             <a href="/tags/Javascript/"> #Javascript </a>
           
-            <a href="/tags/NodeJs/"> #NodeJs </a>
-          
         </div>
       
 
@@ -193,13 +186,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/22/解决Mac java.net Local host name unknown error的方法/">解决Mac_java.net_Local_host_name_unknown_error的方法</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/20/CSS3中display box的用法/">CSS3中display:box的用法</a>
+              <a href="/2015/07/02/Fastclick导致click事件触发两次的问题/">Fastclick导致click事件触发两次的问题</a>
             
           </div>
         </div>
@@ -215,8 +206,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/"
-               data-title="模块导致CPU占用高的问题" data-url="http://www.foreverpx.cn/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/">
+          <div class="ds-thread" data-thread-key="2015/08/11/Select2插件 IE下 autofocus bug的解决方法/"
+               data-title="Select2插件IE下autofocus的解决方法" data-url="http://www.foreverpx.cn/2015/08/11/Select2插件 IE下 autofocus bug的解决方法/">
           </div>
         
       </div>
@@ -314,7 +305,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nodejs_mkdirP_模块导致CPU占用高的问题"><span class="nav-number">1.</span> <span class="nav-text">Nodejs mkdirP 模块导致CPU占用高的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述："><span class="nav-number">1.</span> <span class="nav-text">描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因："><span class="nav-number">2.</span> <span class="nav-text">原因：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
