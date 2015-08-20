@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> Uploadify404无效链接 // Foreverpx </title>
+  <title> post // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              Uploadify404无效链接
+              post
             
           
         </h1>
@@ -125,7 +125,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-11-04
+          發表於 2015-08-20
         </span>
 
         
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2014/11/04/Uploadify404无效链接/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/04/Uploadify404无效链接/"></span>
+            <a href="/2015/08/20/terminal-stock/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/20/terminal-stock/"></span>
             </a>
           </span>
           
@@ -160,17 +160,11 @@
       
 
       
-        <p><a href="http://www.foreverpx.cn/2014/11/04/Uploadify404无效链接">Uploadify404无效链接</a></p>
-<p>在使用Jquery Uploadify插件的時候，会发现在请求中有个返回值为404的请求。</p>
-<p>假如现在的location为www.aa.com/bugs/more.<br>html,在这个页面中进行了Uploadify初始化，这个时候可以在浏览器的调试工具中看到一个404的多余请求。这个请求的地址一般为www.aa.com/bugs/，截取了最后一个“/”后的字符串并请求。</p>
-<a id="more"></a>
-<p>想要去除这个无效请求，就得去修改源码。在未经压缩的源码中找到如下代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.settings.button_image_url =  SWFUpload.completeURL(<span class="keyword">this</span>.settings.button_image_url)</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.settings.button_image_url= <span class="keyword">this</span>.settings.button_image_url ? SWFUpload.completeURL(<span class="keyword">this</span>.settings.button_image_url) : <span class="keyword">this</span>.settings.button_image_url</span><br></pre></td></tr></table></figure>
-<p>我们在初始化的配置中如果没有配置button_image_url，则会产生这个无效链接。所以加一个判断，当button_image_url有配置时才使用completeURL方法来创建请求链接，这样就能避免发送一个无效链接</p>
-<p>参考资料：<br><a href="http://www.oschina.net/question/96568_117454" target="_blank" rel="external">uploadify 初始化访问url</a></p>
-<p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/11/04/Uploadify404无效链接">Uploadify404无效链接</a></p>
+        <p>抽空写了个用控制台看股票的小程序，可以在IDE中的terminal中看股票 0.0</p>
+<p>github 地址：<br><a href="https://github.com/ForeverPx/terminal-stocks" target="_blank" rel="external">github-terminal-stocks</a></p>
+<p>效果图：<br> <img src="//dn-cnode.qbox.me/Fh03PFnmT1W9XyCriNRqQ-oM6rh1" alt="QQ20150811-1@2x.png"></p>
+<p> API：<br> 新浪股票API</p>
+<p>文章作者：forevercjl<br>文章原文csdn链接：<a href="http://www.foreverpx.cn/2015/08/20/terminal-stock/">www.foreverpx.cn</a><br>转载请注明出处。</p>
 
       
     </div>
@@ -188,13 +182,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/11/27/Express文件上传之Multer/">Express文件上传之Multer</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/10/15/Mongodb之安装配置/">Mongodb之安装配置</a>
+              <a href="/2015/08/11/Select2插件 IE下 autofocus bug的解决方法/">Select2插件IE下autofocus的解决方法</a>
             
           </div>
         </div>
@@ -210,8 +202,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/11/04/Uploadify404无效链接/"
-               data-title="Uploadify404无效链接" data-url="http://www.foreverpx.cn/2014/11/04/Uploadify404无效链接/">
+          <div class="ds-thread" data-thread-key="2015/08/20/terminal-stock/"
+               data-title="post" data-url="http://www.foreverpx.cn/2015/08/20/terminal-stock/">
           </div>
         
       </div>
