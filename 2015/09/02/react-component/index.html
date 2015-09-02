@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Javascript,柯里化," />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> 柯里化函数之Javascript // Foreverpx </title>
+  <title> react-component // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              柯里化函数之Javascript
+              react-component
             
           
         </h1>
@@ -125,7 +125,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-09-29
+          發表於 2015-09-02
         </span>
 
         
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2014/09/29/柯里化函数之Javascript/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/29/柯里化函数之Javascript/"></span>
+            <a href="/2015/09/02/react-component/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/react-component/"></span>
             </a>
           </span>
           
@@ -160,18 +160,22 @@
       
 
       
-        <p><a href="http://www.foreverpx.cn/2014/09/29/柯里化函数之Javascript">柯里化函数之Javascript</a></p>
-<h3 id="定义">定义</h3><p>根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：</p>
+        <p>前阵子尝试用React开发了一个项目的前端，写起来还算是流畅。将页面中各模块进行分割并形成组件之后，管理起来更加的方便，代码的可读性也相对于传统的面条式编程有很大的提高。React相对于Angular来说，我个人认为是更加轻量化的，它更注重于MVC中的V。</p>
+<p>举个例子，开发中常常会用到button这个元素，我们会给button加上样式、行为等等。一个项目中button可能是被经常重复使用的，他的样式也可能几乎是一摸一样的，无非是color和size的区别而已。按照传统的写法，可能代码是下面这个样子的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">onClick</span>=<span class="value">'function()&#123;alert('</span><span class="value">clicked!')&#125;'</span> <span class="attribute">class</span>=<span class="value">'btn btn-green btn-large'</span>&gt;</span>点我<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>如果click事件是有默认事件的，class默认也是绿色，那么每次都写这一堆是有点烦了，如果我们将这个button视为一个组件，那么我们可以给它设置默认的样式和行为，并通过传不同的值给组件改变它的状态。我们来个React版本的。</p>
 <a id="more"></a>
-<h3 id="代码">代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concat</span>(<span class="params">str1,str2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str1 + str2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">concat(<span class="string">"forever"</span>,<span class="string">"px"</span>) <span class="comment">// "foreverpx"</span></span><br></pre></td></tr></table></figure>
-<p>不难理解，上面的代码中定义了一个连接字符串的函数，返回连接两个传入参数的字符串。现在我们再看看另一种定义方式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatCurry</span>(<span class="params">str1</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">str2</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> str1 + str2;		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> concatOne = concatCurry(<span class="string">"forever"</span>);</span><br><span class="line">concatOne(<span class="string">"px"</span>); <span class="comment">//foreverpx</span></span><br></pre></td></tr></table></figure>
-<p>上面的代码中，我们将一开始传入两个参数的函数改装成了一个（或者说是两个）只接收一个参数的函数。</p>
-<p>我们来创建一个将接受多个参数的函数柯里化的通用函数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = [].slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, args.concat([].slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> concatOne = curry(concat,<span class="string">"forever"</span>);</span><br><span class="line">concatOne(<span class="string">"px"</span>); <span class="comment">//foreverpx</span></span><br></pre></td></tr></table></figure></p>
-<p>柯里化的过程利用了闭包，使得返回的函数也能获得第一次传入的参数。<br>首先将传入的第二个参数存入args变量中，然后返回一个函数，在返回的函数中，将第一次传入的参数与柯里化之后传入的参数拼接起来成一个数组，然后通过apply方法调用柯里化之前的函数（fn)，这样就达到了柯里化的效果。</p>
-<p>如果是三个参数的函数想要柯里化，则如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concat</span>(<span class="params">s1,s2,s3</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s1+s2+s3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cur1 = curry(concat,<span class="string">"forever"</span>);</span><br><span class="line"><span class="keyword">var</span> cur2 = curry(cur1,<span class="string">"px"</span>);</span><br><span class="line"></span><br><span class="line">cur2(<span class="string">"-me"</span>); <span class="comment">//foreverpx-me</span></span><br></pre></td></tr></table></figure>
-<p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/09/29/柯里化函数之Javascript">柯里化函数之Javascript</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Button = React.createClass(&#123;</span><br><span class="line">    propTypes:&#123;</span><br><span class="line">        children: React.PropTypes.any,</span><br><span class="line">        className: React.PropTypes.string,</span><br><span class="line">        disabled: React.PropTypes.bool,</span><br><span class="line">        onClick: React.PropTypes.func,</span><br><span class="line">        style: React.PropTypes.object,</span><br><span class="line">        type: React.PropTypes.oneOf([<span class="string">'submit'</span>, <span class="string">'button'</span>])</span><br><span class="line">    &#125;,</span><br><span class="line">    getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            disabled:<span class="keyword">this</span>.props.disabled,</span><br><span class="line">            className:<span class="string">'btn-green'</span>,</span><br><span class="line">            type: <span class="keyword">this</span>.props.type ? <span class="keyword">this</span>.props.type : <span class="string">'button'</span>,</span><br><span class="line">            text: <span class="literal">null</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    componentWillReceiveProps:<span class="function"><span class="keyword">function</span>(<span class="params">newProps</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (newProps.disabled !== <span class="keyword">this</span>.props.disabled) &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123; disabled: newProps.disabled &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    text:<span class="function"><span class="keyword">function</span>(<span class="params">text</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            text:text</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    handleClick:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.props.onClick) &#123;</span><br><span class="line">            <span class="keyword">this</span>.props.onClick()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">className</span>=<span class="value">&#123;this.state.className&#125;</span></span><br><span class="line">                    <span class="attribute">disabled</span>=<span class="value">&#123;this.state.disabled&#125;</span></span><br><span class="line">                    <span class="attribute">type</span>=<span class="value">&#123;this.state.type&#125;</span></span><br><span class="line">                    <span class="attribute">style</span>=<span class="value">&#123;this.props.style&#125;</span></span><br><span class="line">                    <span class="attribute">onClick</span>=<span class="value">&#123;this.handleClick.bind(this)&#125;</span>&gt;</span></span><br><span class="line">                &#123;this.state.text || this.props.children&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">        )</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里Button就视为一个模块或者组件，它接收父组件的值来改变它的默认状态，当没有值传入时，使用默认的内部值。<br>为了达到最开始那个button的效果，我们可以这么使用它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.render(&#10;       &#60;div&#62;&#10;           &#60;Button size=&#39;large&#39; onClick=&#39;function()&#123;alert(&#39;click&#39;)&#125;&#39;&#62;&#10;       &#60;/div&#62;&#10;       , document.getElementById(&#39;container&#39;));</span><br></pre></td></tr></table></figure></p>
+<p>虽然这样看上去好像并没有和传统方式有太大的区别，而且还多了一堆代码去定义这个button组件，得不偿失，但是这仅仅只是组件化的开始，面对更复杂的组件时，它的好处就体现出来了。看看下面的例子：</p>
+<p>需求是我们需要一个搜索框，在用户输入的同时通过异步请求进行搜索，同时为了防止用户输入速度快导致请求过于频繁，在用户输入每个字后延迟300ms进行搜索，如果在这段时间内用户任然有输入，那么就再延迟300ms，也就是高频防抖。</p>
+<p>以传统的方式来，我们得先写个input，然后把这个input包装成search input的样子，然后注册事件，并在事件中设置延迟函数，然后才真正执行搜索动作。。。等另一个页面又有搜索时，重复刚才的步骤。如果把SearchInput设想成一个组件，那么它会是下面这个样子的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> SearchInput = React.createClass(&#123;</span><br><span class="line">    inputTimeout:<span class="literal">null</span>,</span><br><span class="line">    propTypes:&#123;</span><br><span class="line">        size: React.PropTypes.string,</span><br><span class="line">        onInput: React.PropTypes.func,</span><br><span class="line">        delay: React.PropTypes.number,</span><br><span class="line">        disabled: React.PropTypes.bool</span><br><span class="line">    &#125;,</span><br><span class="line">    getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            size: <span class="keyword">this</span>.props.size ? <span class="keyword">this</span>.props.size : <span class="string">''</span>,</span><br><span class="line">            delay: <span class="keyword">this</span>.props.delay ? <span class="keyword">this</span>.props.delay : <span class="number">300</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    handleInput: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> value = event.target.value;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.inputTimeout)&#123;</span><br><span class="line">            <span class="built_in">window</span>.clearTimeout(<span class="keyword">this</span>.inputTimeout);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">this</span>.inputTimeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            that.props.onInput(value);</span><br><span class="line">        &#125;,<span class="keyword">this</span>.state.delay);</span><br><span class="line">    &#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> sizeClasss = <span class="keyword">this</span>.state.size ? <span class="string">"topcoat-search-input--"</span>+<span class="keyword">this</span>.state.size :</span><br><span class="line">            <span class="string">"topcoat-search-input"</span>;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="xml"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"search"</span></span><br><span class="line">                   <span class="attribute">placeholder</span>=<span class="value">'search'</span></span><br><span class="line">                   <span class="attribute">onInput</span>=<span class="value">&#123;this.handleInput.bind(this)&#125;</span></span><br><span class="line">                   <span class="attribute">className</span>=<span class="value">&#123;sizeClasss&#125;</span></span><br><span class="line">                   <span class="attribute">disabled</span>=<span class="value">&#123;this.props.disabled&#125;</span></span><br><span class="line">                /&gt;</span></span><br><span class="line">        )</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>我们将延迟的时间和是否禁用等信息当做属性传给SearchInput组件，并将延迟操作的逻辑等封装在组件内部，以后我们就不用关心这些了，直接使用即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.render(&#10;       &#60;div&#62;&#10;           &#60;SearchInput delay=500 onClick=&#39;function(value)&#123;alert(value)&#125;&#39;&#62;&#60;/SearchInput&#62;&#10;       &#60;/div&#62;&#10;       , document.getElementById(&#39;container&#39;));</span><br></pre></td></tr></table></figure>
+<p>我们传入delay与搜索逻辑函数即可，input的value也会传入搜索逻辑函数。</p>
+<p>当然，还有更复杂的情况，我们可以将逻辑封装在组件中，使用的人只需要通过属性改变组件的状态，而不需要关心组件状态改变的逻辑。</p>
+<p>最近尝试封装一些通用的React UI组件，挑选了Topcoat样式去封装，感兴趣的朋友可以点击下面这个链接<br><a href="https://github.com/ForeverPx/react-topcoat" target="_blank" rel="external">https://github.com/ForeverPx/react-topcoat</a></p>
+<p>文章作者：forevercjl<br>原文链接：<a href="http://www.foreverpx.cn/2015/09/02/react-component/">www.foreverpx.cn</a><br>转载请注明出处。</p>
 
       
     </div>
@@ -182,8 +186,6 @@
           
             <a href="/tags/Javascript/"> #Javascript </a>
           
-            <a href="/tags/柯里化/"> #柯里化 </a>
-          
         </div>
       
 
@@ -191,13 +193,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/10/15/Mongodb之安装配置/">Mongodb之安装配置</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/28/初识ServiceWorker/">初识ServiceWorker</a>
+              <a href="/2015/08/20/terminal-stock/">用控制台看股票的小程序</a>
             
           </div>
         </div>
@@ -213,8 +213,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/09/29/柯里化函数之Javascript/"
-               data-title="柯里化函数之Javascript" data-url="http://www.foreverpx.cn/2014/09/29/柯里化函数之Javascript/">
+          <div class="ds-thread" data-thread-key="2015/09/02/react-component/"
+               data-title="react-component" data-url="http://www.foreverpx.cn/2015/09/02/react-component/">
           </div>
         
       </div>
@@ -312,7 +312,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目錄</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

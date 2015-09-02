@@ -119,6 +119,97 @@
           
           
             
+              <a class="post-title-link" href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/">
+                模块导致CPU占用高的问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-05-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/frontend/">frontend</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="Nodejs_mkdirP_模块导致CPU占用高的问题">Nodejs mkdirP 模块导致CPU占用高的问题</h1><p>近期将nodejs项目部署到服务器上并启动时，发现node进程的cpu占用率在40%左右，当时表示非常不解，刚启动的服务并没有运行什么需要大量消耗cpu的逻辑，且此时还未有请求发送到服务器端。</p>
+<p>鉴于这种情况，只能猜测是某段程序在初始化一些东西的时候异常，所以才导致了这种情况。</p>
+<p>经过对代码的排查后，最终锁定出为题的代码块如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">router.use(multer(&#123;</span><br><span class="line">    dest: config.uploadDir,</span><br><span class="line">    limits:&#123;</span><br><span class="line">        fileSize : config.fileSizeLimit, <span class="comment">//bytes , == 50M</span></span><br><span class="line">        files : <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rename:<span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uuid.v1() + <span class="string">"_"</span> + filename + <span class="string">"_"</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;,</span><br><span class="line">    onFileUploadStart: <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(file.originalname + <span class="string">' is starting ...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onError: <span class="function"><span class="keyword">function</span> (<span class="params">error, next</span>) </span>&#123;</span><br><span class="line">        winston.error(error);</span><br><span class="line">        next(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#more">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/"> #Javascript </a>
+          
+            <a href="/tags/NodeJs/"> #NodeJs </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/05/20/CSS3中display box的用法/">
                 CSS3中display:box的用法
               </a>
@@ -467,98 +558,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/">
-                Linux中npm出现npmlog找不到的解决方法
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-11-29
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/frontend/">frontend</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/29/Linux中npm出现npmlog找不到的解决方法/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>​<a href="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法">Linux中npm出现npmlog找不到的解决方法</a></p>
-<h2 id="描述">描述</h2><p>今天在对nodejs项目进行服务器迁移的时，在新的linux服务器上输入 npm -v 命令后报 “cannot find module ‘npmlog’….”的错误。找到的原因是拷贝过去的bin目录下的<code>npm</code>文件并没有链接到module目录下的<code>npm-cli.js</code>文件，所以导致在执行 <code>npm -v</code> 命令时，路径问题导致<code>npmlog</code>模块无法找到。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/#more">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Linux/"> #Linux </a>
-          
-            <a href="/tags/NodeJs/"> #NodeJs </a>
-          
-            <a href="/tags/Npm/"> #Npm </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -597,7 +596,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
