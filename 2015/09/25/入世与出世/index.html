@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Express,NodeJs," />
+  <meta name="keywords" content="杂谈," />
 
 
 
@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> Express文件上传之Multer // Foreverpx </title>
+  <title> 入世与出世 // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              Express文件上传之Multer
+              入世与出世
             
           
         </h1>
@@ -125,14 +125,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-11-27
+          發表於 2015-09-25
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/frontend/">frontend</a>
+              <a href="/categories/live/">live</a>
 
               
               
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2014/11/27/Express文件上传之Multer/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/27/Express文件上传之Multer/"></span>
+            <a href="/2015/09/25/入世与出世/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/入世与出世/"></span>
             </a>
           </span>
           
@@ -160,21 +160,27 @@
       
 
       
-        <p>​Express文件上传之Multer</p>
-<p>Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在<a href="https://github.com/mscdex/busboy" target="_blank" rel="external">busboy</a>的基础上开发的。</p>
-<p>在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。</p>
+        <h1 id="读圣凯法师“入世与出世”有感。">读圣凯法师“入世与出世”有感。</h1><p>入世即是我们所面对的生活，柴米油盐酱醋茶，衣食住行，行住坐卧。</p>
+<p>出世即解脱，不是驾鹤西去，而是自我解脱。无关生死，不管世间痛苦，俗话说就是看开了。</p>
+<p>其实我们每天都生活在痛苦之中，有的人是生理上的痛，如头痛、脚痛等病痛。有的人是内心痛，往往是由于现实没有达到我们欲望的值。你说你不痛，那只是你没有感觉到而已。</p>
+<p>今天看了一个比较认同的问答。问：为什么要学佛呢？答：我们的家庭，起心动念都是入世。学佛是为了追求人生解脱，这就是出世。</p>
+<h2 id="入世的生活">入世的生活</h2><p>人们每天为了追求名利而奔波劳累，其实佛法对我们的物质生活是不排斥的，是具有指导性的。</p>
+<p>有个和尚曾经问慧海禅师如何用功修道，慧海禅师说，吃饭的时候吃饭，睡觉的时候睡觉。那个和尚说，这不是跟我们平常人一样吗？<br>慧海禅师说：平常人吃饭的时候百般思索，睡觉的时候千般计较。</p>
+<p>淡有淡的味道，咸有咸的味道，找到适合自己的味道就好，心安最重要。</p>
 <a id="more"></a>
-<h2 id="安装">安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install multer --save</span><br></pre></td></tr></table></figure>
-<h2 id="基本用法">基本用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">'multer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line">app.use(multer(&#123; dest: <span class="string">'./uploads/'</span>&#125;))</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.use(<span class="function"><span class="keyword">function</span>(<span class="params">req,res,next</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(req.files); <span class="comment">//JSON Object</span></span><br><span class="line">	next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>从上面的代码可以看到，multer作为一个中间件传入了app.use，当有上传请求到来时，express会拦截此请求并通过multer组件完成上传操作。在multer初始化方法中传入的是配置对象，我们可以在里面配置我们自定义的参数，例如“文件大小限制”，“文件数量限制”等等。</p>
-<p>不仅可以添加限制，还能给上传注册事件，例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传开始时触发</span></span><br><span class="line">onFileUploadStart:<span class="function"><span class="keyword">function</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"upload start"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//上传结束时触发</span></span><br><span class="line">onFileUploadComplete:<span class="function"><span class="keyword">function</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"upload complete"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
-<p>我们在真正接受上传的action中，通过req中的files获得文件的基本信息，此信息为JSON格式，常用的信息如下。</p>
-<p>originalname - 文件原名<br>path - 上传文件存放的路径<br>size - 文件大小</p>
-<p>更多详细的属性和配置请参见Multer的<a href="https://github.com/expressjs/multer" target="_blank" rel="external">Github</a>主页。</p>
-<p><a href="https://github.com/expressjs/multer" target="_blank" rel="external">Multer</a></p>
-<p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/11/27/Express文件上传之Multer">Express文件上传之Multer </a></p>
+<p>佛称众生是有情众生，人都是有感情的，冷酷无情的人被称作冷血动物。真正的感情来自智慧，来自慈悲。父母爱孩子该怎样爱？作为子女，同样要孝顺父母。父母很辛苦，养我们这么大，我以朋友的身份劝告大家要多孝顺父母。</p>
+<p>我们在生活中会遇到各种痛苦，有痛苦，就是入世的生活的痛苦。人我纷争的世界，斗争不断，加上自然界的各种自然灾害，生理上的生老病死，都是痛苦。从心理上，有贪嗔痴的痛苦。“一念嗔心起，百万障门开”。嗔恨心一起，你的功德就会消失，业障都会上来。</p>
+<h2 id="出世的生活">出世的生活</h2><p>佛说出世：“非离开人间，非期于来世”。什么意思呢？<br>道理就是出世并不是指一个人死了，或者是自我解脱，什么事情都不管了，自己活自己的，身边有任何事情发生都与自己无关，虽然活着，但是个行尸走肉。很显然，佛并不是这个意思。<br>佛指的是超脱自我，不从自我的角度生活，而是以更高层次的精神生活，用自己的智慧从事普度众生的事业，通俗的来世，可以理解为别人着想和服务，让世界充满真理和正义，使国家富强。</p>
+<p>佛陀原是迦毗罗卫国太子，迦毗罗卫国国力弱小，当琉璃王要攻打迦毗罗卫国时，佛陀挺身而出。当琉璃王大军过来时，佛陀坐在路中间。当是印度有个风俗，战争期间，看到出家人必须撤兵，琉璃王只好退兵。第二天情况依然如此，第三天，琉璃王只好亲自走上来问佛陀为什么不坐在树下乘凉，而坐在马路中间。佛陀说：亲属之荫胜余荫，如果国家灭亡了，我坐在树下乘凉还有什么意义呢</p>
+<h2 id="如何出世入世">如何出世入世</h2><p>首先要有度人的发心，再来充实自我的能力。到底是先度人还是先度己，还是度人度己是一体的？这个问题总是困扰着我们。正确的做法是先有度人的发心。再来充实自我的能力。发心很重要，就是让我们的念头保持很大的力量。学佛需要你下很大的决心。一个心念动，就是发心。我们如果念念趋向善，我们就能向善。有一念的心，就能够成就事业。我们不要乞求人的恩赐。有人曾经问日本的铃木大拙先生，释迦牟尼佛对众生最后的希望是什么？铃木先生：抛弃依赖的心。</p>
+<p>先有出世的思想，再来做入世的事业。有些人只能入世，不能出世；有些人则只能出世，不能入世。我们要先有出世的思想，才能做入世的事业。如果没有出世的思想，对世间就容易想贪著心。</p>
+<p>下面是法师提的几点建议：</p>
+<ul>
+<li>对人生要有无常的警觉。古人讲，今天你把鞋子脱在床下，明天早晨不知道还能不能穿得上。死无定期，任何东西生不带来死不带去，这就是无常。无常不是消极，正因为无常，我们才要积极去做。</li>
+<li>对物质不拒不贪。我们的生活离不开物质，但不能对它生起很重的贪心。</li>
+<li>对情爱不执不舍。爱不重不生娑婆。为什么我们生在这个世上？很简单，因为我们曾经爱过。佛经里讲，去除一分爱念，增加一分道念。爱需要我们用智慧和慈悲去净化、引导。</li>
+<li>不能自满，只有这样才能进步。</li>
+</ul>
 
       
     </div>
@@ -183,9 +189,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Express/"> #Express </a>
-          
-            <a href="/tags/NodeJs/"> #NodeJs </a>
+            <a href="/tags/杂谈/"> #杂谈 </a>
           
         </div>
       
@@ -194,13 +198,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/">Linux中npm出现npmlog找不到的解决方法</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/11/04/Uploadify404无效链接/">Uploadify404无效链接</a>
+              <a href="/2015/09/25/css3_perspective/">CSS3 perspective 用法</a>
             
           </div>
         </div>
@@ -216,8 +218,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/11/27/Express文件上传之Multer/"
-               data-title="Express文件上传之Multer" data-url="http://www.foreverpx.cn/2014/11/27/Express文件上传之Multer/">
+          <div class="ds-thread" data-thread-key="2015/09/25/入世与出世/"
+               data-title="入世与出世" data-url="http://www.foreverpx.cn/2015/09/25/入世与出世/">
           </div>
         
       </div>
@@ -315,7 +317,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">2.</span> <span class="nav-text">基本用法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#读圣凯法师“入世与出世”有感。"><span class="nav-number">1.</span> <span class="nav-text">读圣凯法师“入世与出世”有感。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入世的生活"><span class="nav-number">1.1.</span> <span class="nav-text">入世的生活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出世的生活"><span class="nav-number">1.2.</span> <span class="nav-text">出世的生活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何出世入世"><span class="nav-number">1.3.</span> <span class="nav-text">如何出世入世</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
