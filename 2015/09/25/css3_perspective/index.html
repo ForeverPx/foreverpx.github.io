@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Hexo," />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> HEXO 指定404页面 // Foreverpx </title>
+  <title>  // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              HEXO 指定404页面
+              
             
           
         </h1>
@@ -125,7 +125,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-09-23
+          發表於 2015-09-25
         </span>
 
         
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2014/09/23/hexo404/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/23/hexo404/"></span>
+            <a href="/2015/09/25/css3_perspective/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/css3_perspective/"></span>
             </a>
           </span>
           
@@ -160,19 +160,19 @@
       
 
       
-        <p><a href="http://www.foreverpx.cn/2014/09/23/hexo404">HEXO 指定404页面</a></p>
-<p>由于Hexo托管于github，所以加404页面非常容易，只需要在xxx.github.io下面新建一个404页面即可。代码如下：</p>
+        <h1 id="[翻译]CSS3_perspective_用法">[翻译]CSS3 perspective 用法</h1><p>CSS3 perspective属性让元素拥有了视野和视角的效果，而不是像以往的贴在屏幕上的平面，模拟了眼睛与物体之前的距离带来的远近视差效果。比如你站在铁轨上，往铁轨的方向看去，你会看到铁轨并不是平行的，而是趋于相交的。</p>
+<p>它值的大小决定了眼睛与元素的距离，值越小则离得越近，值越大则离的越远。同样在页面上的两个2D正方形，如果perspective属性的值不同，则大小就不一样。</p>
+<p>需要注意的是，perspective并不影响当前元素的渲染，而是影响它的所有子元素。这也是它跟<em>transform:perspective()</em>方法的主要区别，例子如下。</p>
 <a id="more"></a>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	自定义</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>我们也可以使用腾讯的公益<a href="http://www.qq.com/404/" target="_blank" rel="external">404页面</a><br>将页面中的javascript代码拷贝到我们的代码中就可以了</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span>]\</span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://www.qq.com/404/search_children.js"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如下图：<br><img src="http://t.williamgates.net/image-F272_54215F39.jpg" alt="404"></p>
-<p>这时候你会发现，当你再次部署hexo的时候，github上面的404页面又被删除了。这是因为你hexo在你本地的文件夹内并没有这个文件，所以一同步就没了。即使你在本地根目录加了，hexo也会删除。</p>
-<p>所以，这个404的页面要放到source目录下面。（注意，不要放到source下的post里面）<br>放在source下的文件会被上传但不会被解析到文章里面，source目录结构如下</p>
-<p><img src="http://t.williamgates.net/image-10AB_5421616C.jpg" alt="source"></p>
-<p>此时就大功告成了</p>
-<p>在你的域名下输入个不存在的，就能看到结果</p>
-<p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/09/23/hexo404">HEXO 指定404页面</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"parent perspective"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Using perspective property on parent<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"child"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--......--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"parent transform"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Using transform: perspective() on children<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"child"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--......--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.parent</span><span class="class">.perspective</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">perspective</span>:<span class="value"> <span class="number">50em</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.parent</span><span class="class">.perspective</span> <span class="class">.child</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateX</span>(<span class="number">50deg</span>)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> tomato</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.parent</span><span class="class">.transform</span> <span class="class">.child</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">perspective</span>(<span class="number">50em</span>) <span class="function">rotateX</span>(<span class="number">50deg</span>)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> deepskyblue</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>下图左边为perspective属性的效果，右边为transform:perspective()的效果</p>
+<p><img src="http://i3.tietuku.com/b6d4cc479d691203.png" alt=""></p>
+<p>让我们看一个更cool的例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrapper w1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span><span class="tag">&lt;<span class="title">code</span>&gt;</span>perspective: 1000px<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"cube"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side  front"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side   back"</span>&gt;</span>6<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side  right"</span>&gt;</span>4<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side   left"</span>&gt;</span>3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side    top"</span>&gt;</span>5<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side bottom"</span>&gt;</span>2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrapper w2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span><span class="tag">&lt;<span class="title">code</span>&gt;</span>perspective: 250px<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"cube"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side  front"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side   back"</span>&gt;</span>6<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side  right"</span>&gt;</span>4<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side   left"</span>&gt;</span>3<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side    top"</span>&gt;</span>5<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"side bottom"</span>&gt;</span>2<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.wrapper</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.w1</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">perspective</span>:<span class="value"> <span class="number">1000px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.w2</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">perspective</span>:<span class="value"> <span class="number">250px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.wrapper</span> <span class="tag">h1</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.cube</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">4em</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">2em</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">1.5em</span> auto</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">transform-style</span>:<span class="value"> preserve-<span class="number">3</span>d</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateX</span>(-<span class="number">40deg</span>) <span class="function">rotateY</span>(<span class="number">32deg</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.side</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">2em</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">2em</span></span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">rgba</span>(tomato, .<span class="number">6</span>)</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="function">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">5</span>)</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value"> white</span></span>; </span><br><span class="line">  <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">2em</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.front</span>  <span class="rules">&#123; <span class="rule"><span class="attribute">transform</span>:<span class="value">                  <span class="function">translateZ</span>(<span class="number">1em</span>)</span></span>; &#125;</span></span><br><span class="line"><span class="class">.top</span>    <span class="rules">&#123; <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateX</span>( <span class="number">90deg</span>)  <span class="function">translateZ</span>(<span class="number">1em</span>)</span></span>; &#125;</span></span><br><span class="line"><span class="class">.right</span>  <span class="rules">&#123; <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateY</span>( <span class="number">90deg</span>)  <span class="function">translateZ</span>(<span class="number">1em</span>)</span></span>; &#125;</span></span><br><span class="line"><span class="class">.left</span>   <span class="rules">&#123; <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateY</span>(-<span class="number">90deg</span>)  <span class="function">translateZ</span>(<span class="number">1em</span>)</span></span>; &#125;</span></span><br><span class="line"><span class="class">.bottom</span> <span class="rules">&#123; <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateX</span>(-<span class="number">90deg</span>)  <span class="function">translateZ</span>(<span class="number">1em</span>)</span></span>; &#125;</span></span><br><span class="line"><span class="class">.back</span>   <span class="rules">&#123; <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateY</span>(-<span class="number">180deg</span>) <span class="function">translateZ</span>(<span class="number">1em</span>)</span></span>; &#125;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下图：</p>
+<p><img src="http://i3.tietuku.com/40e525e00e9ca7e7.png" alt=""></p>
 
       
     </div>
@@ -181,7 +181,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/"> #Hexo </a>
+            <a href="/tags/Javascript/"> #Javascript </a>
           
         </div>
       
@@ -190,13 +190,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/09/25/Hexo免输入密码部署到github/">Hexo免输入密码部署到github</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/23/tech-free/">凯文·凯利:技术想要免费</a>
+              <a href="/2015/09/02/react-component/">React，用组件化思想写前端代码</a>
             
           </div>
         </div>
@@ -212,8 +210,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/09/23/hexo404/"
-               data-title="HEXO 指定404页面" data-url="http://www.foreverpx.cn/2014/09/23/hexo404/">
+          <div class="ds-thread" data-thread-key="2015/09/25/css3_perspective/"
+               data-title="" data-url="http://www.foreverpx.cn/2015/09/25/css3_perspective/">
           </div>
         
       </div>
@@ -311,7 +309,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目錄</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#[翻译]CSS3_perspective_用法"><span class="nav-number">1.</span> <span class="nav-text">[翻译]CSS3 perspective 用法</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -904,10 +902,6 @@
 
 
   
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"3","bdPos":"left","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
   
 </body>
 </html>
