@@ -174,7 +174,7 @@
 <p>这里利用了mysql支持列编号排序的规则。<code>order by 1</code>表示按照第一列排序，其实看到这应该懂了吧，如果你写了一个不存在的列序号，就<br>会报错，所以临界值就是列数。</p>
 <h1 id="系统函数">系统函数</h1><p><code>load_file</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user <span class="built_in">where</span> username = <span class="string">'?'</span> union select <span class="number">1</span>,load_file(<span class="number">0</span>x111111111111111),<span class="number">3</span></span><br></pre></td></tr></table></figure></p>
 <p>load_file传入的是文件路径的16进制值，返回的结果中就会将该文件的内容返回到对应列中。</p>
-<h1 id="防御sql注入">防御sql注入</h1><p>1.在java中使用prepareStatement接口，该接口在生成sql时会将输入的字符串逐个字符检查并转义来防止注入。</p>
+<h1 id="防御sql注入">防御sql注入</h1><p>1.在java中使用prepareStatement接口，改接口使用的数据库的预编译功能，将需要执行的sql都预先进行编译并缓存起来，传入的参数会完全被当做是值，并不会跟sql语句发生任何关系，即改变不了sql的逻辑，所以能防止sql注入。</p>
 <p>2.对输入的类型进行判断，在id=1的情况下，只允许输入参数为整形，而不允许为字符串。</p>
 <p>3.自己实现函数对输入的sql关键词过滤。</p>
 <h1 id="相关资料">相关资料</h1><p>下面这个网站中有大量的sql注入资料，包括入门三部曲，攻防教程等等，值得一看。</p>
