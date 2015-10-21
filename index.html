@@ -119,6 +119,96 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/21/sql-inject-base/">
+                sql注入基础
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2015-10-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/frontend/">frontend</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/10/21/sql-inject-base/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/21/sql-inject-base/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="什么是sql注入？">什么是sql注入？</h1><p>简单来说，sql注入就是你写的sql执行了你并不期望执行的数据查询逻辑。</p>
+<p>下面来看一个简单的例子。有一个url请求如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.foreverpx.cn/blogs?id=<span class="number">123456</span></span><br></pre></td></tr></table></figure></p>
+<p>上面这个请求的功能是通过id获得某篇blog的数据，sql注入就可以从这里开始。</p>
+<p>我们将<code>id=123456</code>替换掉：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/21/sql-inject-base/#more">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sql/"> #Sql </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/20/nightmare/">
                 Nightmare 浏览器自动化工具
               </a>
@@ -468,95 +558,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/09/02/react-component/">
-                React，用组件化思想写前端代码
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2015-09-02
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/frontend/">frontend</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/09/02/react-component/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/02/react-component/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>前阵子尝试用React开发了一个项目的前端，写起来还算是流畅。将页面中各模块进行分割并形成组件之后，管理起来更加的方便，代码的可读性也相对于传统的面条式编程有很大的提高。React相对于Angular来说，我个人认为是更加轻量化的，它更注重于MVC中的V。</p>
-<p>举个例子，开发中常常会用到button这个元素，我们会给button加上样式、行为等等。一个项目中button可能是被经常重复使用的，他的样式也可能几乎是一摸一样的，无非是color和size的区别而已。按照传统的写法，可能代码是下面这个样子的：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">onClick</span>=<span class="value">'function()&#123;alert('</span><span class="value">clicked!')&#125;'</span> <span class="attribute">class</span>=<span class="value">'btn btn-green btn-large'</span>&gt;</span>点我<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>如果click事件是有默认事件的，class默认也是绿色，那么每次都写这一堆是有点烦了，如果我们将这个button视为一个组件，那么我们可以给它设置默认的样式和行为，并通过传不同的值给组件改变它的状态。我们来个React版本的。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/02/react-component/#more">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Javascript/"> #Javascript </a>
-          
-        </div>
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -595,7 +596,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -609,7 +610,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
