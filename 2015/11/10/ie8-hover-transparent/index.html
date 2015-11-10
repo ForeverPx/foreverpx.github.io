@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Javascript," />
+  <meta name="keywords" content="Css," />
 
 
 
@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> Uploadify404无效链接 // Foreverpx </title>
+  <title> ie8-hover-transparent // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              Uploadify404无效链接
+              ie8-hover-transparent
             
           
         </h1>
@@ -125,7 +125,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2014-11-04
+          發表於 2015-11-10
         </span>
 
         
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2014/11/04/Uploadify404无效链接/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/11/04/Uploadify404无效链接/"></span>
+            <a href="/2015/11/10/ie8-hover-transparent/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/10/ie8-hover-transparent/"></span>
             </a>
           </span>
           
@@ -160,17 +160,17 @@
       
 
       
-        <p><a href="http://www.foreverpx.cn/2014/11/04/Uploadify404无效链接">Uploadify404无效链接</a></p>
-<p>在使用Jquery Uploadify插件的時候，会发现在请求中有个返回值为404的请求。</p>
-<p>假如现在的location为www.aa.com/bugs/more.<br>html,在这个页面中进行了Uploadify初始化，这个时候可以在浏览器的调试工具中看到一个404的多余请求。这个请求的地址一般为www.aa.com/bugs/，截取了最后一个“/”后的字符串并请求。</p>
+        <p>在IE8下，当一个div设置了背景为透明或者不设置任何背景时，在该div上注册的hover事件是不会触发的。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">'outer'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">'inner'</span>&gt;</span></span><br><span class="line">        此处有文字</span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.outer</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="rule"><span class="attribute">.outer</span>:<span class="value">hover&#123;</span><br><span class="line">    color:<span class="hexcolor">#000000</span></span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>想要去除这个无效请求，就得去修改源码。在未经压缩的源码中找到如下代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.settings.button_image_url =  SWFUpload.completeURL(<span class="keyword">this</span>.settings.button_image_url)</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.settings.button_image_url= <span class="keyword">this</span>.settings.button_image_url ? SWFUpload.completeURL(<span class="keyword">this</span>.settings.button_image_url) : <span class="keyword">this</span>.settings.button_image_url</span><br></pre></td></tr></table></figure>
-<p>我们在初始化的配置中如果没有配置button_image_url，则会产生这个无效链接。所以加一个判断，当button_image_url有配置时才使用completeURL方法来创建请求链接，这样就能避免发送一个无效链接</p>
-<p>参考资料：<br><a href="http://www.oschina.net/question/96568_117454" target="_blank" rel="external">uploadify 初始化访问url</a></p>
-<p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/11/04/Uploadify404无效链接">Uploadify404无效链接</a></p>
+<p>上面这段代码中，给outer加上了hover的伪类，正常情况下，鼠标移到outer的100*100的区域中，就会触发hover，并使得内部的文字的颜色<br>变成黑色。但是在IE8下面，鼠标在除文字以往的区域都不回触发hover，只有在鼠标位于文字上时，才会触发。</p>
+<p>针对于这个bug，有如下解决方案：</p>
+<p>1.给outer设置真实的背景图片，不过是一张1*1的透明png。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.outer</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background-image</span>:<span class="value"><span class="function">url</span>(<span class="string">'1.png'</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>2.给outer设置一个不存在的图片，不过会产生404请求。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.outer</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background-image</span>:<span class="value"><span class="function">url</span>(<span class="string">'.'</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>更多的参考资料可看如下链接：</p>
+<p><a href="http://blog.rednael.com/2009/09/01/TrappingMouseEventsOnTransparentInputElementsOrTextareasInIE.aspx" target="_blank" rel="external">http://blog.rednael.com/2009/09/01/TrappingMouseEventsOnTransparentInputElementsOrTextareasInIE.aspx</a></p>
 
       
     </div>
@@ -179,7 +179,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/"> #Javascript </a>
+            <a href="/tags/Css/"> #Css </a>
           
         </div>
       
@@ -188,13 +188,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/11/27/Express文件上传之Multer/">Express文件上传之Multer</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/10/15/Mongodb之安装配置/">Mongodb之安装配置</a>
+              <a href="/2015/10/21/sql-inject-base/">sql注入基础</a>
             
           </div>
         </div>
@@ -210,8 +208,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2014/11/04/Uploadify404无效链接/"
-               data-title="Uploadify404无效链接" data-url="http://www.foreverpx.cn/2014/11/04/Uploadify404无效链接/">
+          <div class="ds-thread" data-thread-key="2015/11/10/ie8-hover-transparent/"
+               data-title="ie8-hover-transparent" data-url="http://www.foreverpx.cn/2015/11/10/ie8-hover-transparent/">
           </div>
         
       </div>
