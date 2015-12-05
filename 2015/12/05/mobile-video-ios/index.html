@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Css," />
+  <meta name="keywords" content="MobileWeb," />
 
 
 
@@ -45,7 +45,7 @@
   </script>
 
 
-  <title> CSS3中display:box的用法 // Foreverpx </title>
+  <title> 移动web开发之——iso中的video // Foreverpx </title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
           
           
             
-              CSS3中display:box的用法
+              移动web开发之——iso中的video
             
           
         </h1>
@@ -125,7 +125,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-05-20
+          發表於 2015-12-05
         </span>
 
         
@@ -145,8 +145,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/05/20/CSS3中display box的用法/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/20/CSS3中display box的用法/"></span>
+            <a href="/2015/12/05/mobile-video-ios/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/05/mobile-video-ios/"></span>
             </a>
           </span>
           
@@ -160,23 +160,33 @@
       
 
       
-        <p><a href="http://www.foreverpx.cn/2015/05/20/CSS3中display:box的用法">#CSS3中display:box的用法</a></p>
-<p>css3 给display属性带来了box这个值，这个新值给开发带来了极大的方便。</p>
-<p>其中的一个场景如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'outer'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'a1'</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'a2'</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'a3'</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>假如我们想要使得内部的123元素水平以不同的比例分割outer所占的空间，以往的做法我们可能会让123元素浮动或者设置display属性为inline-block，然后再给width属性设置宽度百分比去分割outer。</p>
-<p>使用display:box后可以这样实现：</p>
+        <p>移动web开发中，我们常常会用到video标签去播放多媒体视频。但不同于pc端浏览器中使用video标签，<br>很多属性和方法在ios中的safari是被限制的，同时也新增了一些特性，下面一一道来。</p>
+<h2 id="对于小屏幕的优化">对于小屏幕的优化</h2><p>在iphone这样的小屏幕中，当用户点击播放按钮时，总是以全屏的方式去播放视频，此时video会适配横屏<br>和竖屏模式。由于总是以全屏播放，你会发现设置control属性之后，在video标签加载完毕后是看不到控制栏的<br>，只有video的一张post在页面中，点击post全屏播放视频后，control才会出现。我觉得这样设定是为了<br>能让用户具有更好的观看体验，屏幕本来就小，在如此小的屏幕下还不全屏看就太难受了。但这个设定只是针对<br>ios中的safari，而不针对MacOs中的safari。  </p>
 <a id="more"></a>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#outer</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">600px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value">-moz-box</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value">-webkit-box</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value">box</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="id">#a1</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value">blue</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-moz-box-flex</span>:<span class="value"><span class="number">1</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-box-flex</span>:<span class="value"><span class="number">1</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">box-flex</span>:<span class="value"><span class="number">1</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="id">#a2</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value">green</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-moz-box-flex</span>:<span class="value"><span class="number">2</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-box-flex</span>:<span class="value"><span class="number">2</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">box-flex</span>:<span class="value"><span class="number">2</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="id">#a3</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value">yellow</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-moz-box-flex</span>:<span class="value"><span class="number">3</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-box-flex</span>:<span class="value"><span class="number">3</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">box-flex</span>:<span class="value"><span class="number">3</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：<br><img src="http://img.blog.csdn.net/20150512195648399" alt="none"></p>
-<p>子元素中box-flex属性为该元素的占比，若想让此属性生效，父元素必须设置display:box。以a3为例，a3设置了box-flex为3，则他所占的宽度为<strong>600*(3/(1+2+3))</strong>为300px。</p>
-<p>如果其中一个子元素设置了固定宽度100px，则剩下的500px将会参与到比例划分的规则中。</p>
-<p>除此之外，还有几个与display:box相关的属性。</p>
-<p>1.box-orient<br>horizontal | vertical | inline-axis | block-axis | inherit<br>用来确定子容器的排列方式（水平or垂直or。。。）</p>
-<p>2.box-direction<br>normal | reverse | inherit<br>用来确定子容器的方向，如果设置为reverse，则刚才代码的显示效果为a3-&gt;a2-&gt;a1。</p>
-<p>3、box-align<br>start | end | center | baseline | stretch<br>box-align表示父容器里面子容器的垂直对齐方式（顶部对齐or底部对齐or中线对齐。。。）</p>
-<p>3、box-pack<br>start | end | center | justify<br>box-pack表示父容器里面子容器的水平对齐方式<br>分别代表<br>左对齐，右对齐，居中对齐，水平均分。</p>
-<p>文章作者：forevercjl<br>文章原文csdn链接：<a href="http://blog.csdn.net/ForeverCjl/article/details/45673739" target="_blank" rel="external">http://blog.csdn.net/ForeverCjl/article/details/45673739</a><br>转载请注明出处。</p>
+<h2 id="移动网络下的用户操作">移动网络下的用户操作</h2><p>用户使用手机的时候很有可能是在移动2-4G的网络情况下，所以在ios的Safari中，video是不允许预加载和<br>自动播放的。只有当用户手动触发开始事件之后，诸如<code>play()</code>、<code>stop()</code>这样的方法才能起作用，例如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Play"</span> <span class="attribute">onclick</span>=<span class="value">"document.myMovie.play()"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">onload</span>=<span class="value">"document.myMovie.play()"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>像上面这段代码，在ios的safari中就不起作用。只有当用户亲自触发开始时，才能用play()函数去控制<br>video。这样设定的目的是为了防止用户产生过高的流量费用，因为用户打开网页时，可能并没有打算去观看<br>视频。PS: audio标签也是同样的规则。</p>
+<h2 id="ios中video的默认高度和宽度">ios中video的默认高度和宽度</h2><p>ios中，当没有指定高和宽时，video的默认高度和宽度为150*300，当video开始播放后，高和宽是不能<br>改变的了。</p>
+<h2 id="支持的格式">支持的格式</h2><ul>
+<li><p>desktop: Safari中，media能支持的视频格式取决于系统中安装的QuickTime。</p>
+</li>
+<li><p>iphone: Safari中，media支持无损的WAV、AIF、MP3、HE-ACC、MPEG-4、H264。</p>
+</li>
+</ul>
+<h2 id="一个页面上有多个video或audio实例">一个页面上有多个video或audio实例</h2><p>现在ios中不支持一个页面同时播放两个（包含两个）以上的video或audio。</p>
+<h2 id="音量控制">音量控制</h2><ul>
+<li><p>desktop: Safari可以通过volume属性去设置media的音量，但是这个音量的范围是跟系统相关的。当设置的<br>值为1时，音量为当前用户设置的系统音量。当设置为0时，音量为静音。其他的音量的0~1之间。</p>
+</li>
+<li><p>iphone: 在ios中，音量只受用户通过物理按键去控制，通过javascript去设置volume属性是无效的。读取volume属性会<br>永远返回1。</p>
+</li>
+</ul>
+<h2 id="播放速率">播放速率</h2><ul>
+<li><p>desktop: 可以设置0~1的值给playbackRate属性去改变播放速率。</p>
+</li>
+<li><p>iphone: 不支持playbackRate属性。</p>
+</li>
+</ul>
+<p>更多关于safari中的媒体标签的细节请参考苹果的官网文档：<br><a href="https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW1" target="_blank" rel="external">https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW1</a></p>
+<p>原文出处：<a href="http://www.foreverpx.cn">http://www.foreverpx.cn</a><br>转载请注明出处。</p>
 
       
     </div>
@@ -185,7 +195,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Css/"> #Css </a>
+            <a href="/tags/MobileWeb/"> #MobileWeb </a>
           
         </div>
       
@@ -194,13 +204,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/">模块导致CPU占用高的问题</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/03/04/Java中Spring删除cookie/">Java中Spring删除cookie</a>
+              <a href="/2015/11/21/mobile-viewport/">移动web开发之——viewport</a>
             
           </div>
         </div>
@@ -216,8 +224,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/05/20/CSS3中display box的用法/"
-               data-title="CSS3中display:box的用法" data-url="http://www.foreverpx.cn/2015/05/20/CSS3中display box的用法/">
+          <div class="ds-thread" data-thread-key="2015/12/05/mobile-video-ios/"
+               data-title="移动web开发之——iso中的video" data-url="http://www.foreverpx.cn/2015/12/05/mobile-video-ios/">
           </div>
         
       </div>
@@ -315,7 +323,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目錄</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于小屏幕的优化"><span class="nav-number">1.</span> <span class="nav-text">对于小屏幕的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动网络下的用户操作"><span class="nav-number">2.</span> <span class="nav-text">移动网络下的用户操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios中video的默认高度和宽度"><span class="nav-number">3.</span> <span class="nav-text">ios中video的默认高度和宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持的格式"><span class="nav-number">4.</span> <span class="nav-text">支持的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个页面上有多个video或audio实例"><span class="nav-number">5.</span> <span class="nav-text">一个页面上有多个video或audio实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音量控制"><span class="nav-number">6.</span> <span class="nav-text">音量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#播放速率"><span class="nav-number">7.</span> <span class="nav-text">播放速率</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
