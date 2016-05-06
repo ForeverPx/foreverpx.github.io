@@ -115,7 +115,7 @@
   <title> Foreverpx </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首頁
+            首页
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            歸檔
+            归档
           </a>
         </li>
       
@@ -202,7 +202,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            標籤
+            标签
           </a>
         </li>
       
@@ -258,9 +258,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-05-22T20:09:14+08:00" content="5月 22 2015">
-              5月 22 2015
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-22T20:09:14+08:00" content="May 22 2015">
+              May 22 2015
             </time>
           </span>
 
@@ -270,7 +270,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分類於</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/frontend/" itemprop="url" rel="index">
@@ -321,7 +321,7 @@
 <p><em>Error: Exception thrown by the agent : java.net.MalformedURLException: Local host name unknown: java.net.UnknownHostException: XXXX: XXXX: nodename nor servname provided, or not known</em></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/05/22/解决Mac java.net Local host name unknown error的方法/#more" rel="contents">
-              閱讀全文 &raquo;
+              阅读全文 &raquo;
             </a>
           </div>
         
@@ -384,9 +384,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-05-21T19:56:50+08:00" content="5月 21 2015">
-              5月 21 2015
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-21T19:56:50+08:00" content="May 21 2015">
+              May 21 2015
             </time>
           </span>
 
@@ -396,7 +396,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分類於</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/frontend/" itemprop="url" rel="index">
@@ -447,7 +447,7 @@
 <p>经过对代码的排查后，最终锁定出为题的代码块如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">router.use(multer(&#123;</span><br><span class="line">    dest: config.uploadDir,</span><br><span class="line">    limits:&#123;</span><br><span class="line">        fileSize : config.fileSizeLimit, <span class="comment">//bytes , == 50M</span></span><br><span class="line">        files : <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rename:<span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uuid.v1() + <span class="string">"_"</span> + filename + <span class="string">"_"</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;,</span><br><span class="line">    onFileUploadStart: <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(file.originalname + <span class="string">' is starting ...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onError: <span class="function"><span class="keyword">function</span> (<span class="params">error, next</span>) </span>&#123;</span><br><span class="line">        winston.error(error);</span><br><span class="line">        next(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#more" rel="contents">
-              閱讀全文 &raquo;
+              阅读全文 &raquo;
             </a>
           </div>
         
@@ -510,9 +510,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-05-20T22:08:03+08:00" content="5月 20 2015">
-              5月 20 2015
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-20T22:08:03+08:00" content="May 20 2015">
+              May 20 2015
             </time>
           </span>
 
@@ -522,7 +522,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分類於</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/frontend/" itemprop="url" rel="index">
@@ -576,7 +576,7 @@
 <p>使用display:box后可以这样实现：</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/05/20/CSS3中display box的用法/#more" rel="contents">
-              閱讀全文 &raquo;
+              阅读全文 &raquo;
             </a>
           </div>
         
@@ -639,9 +639,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-03-04T18:59:54+08:00" content="3月 4 2015">
-              3月 4 2015
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-04T18:59:54+08:00" content="Mar 4 2015">
+              Mar 4 2015
             </time>
           </span>
 
@@ -651,7 +651,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分類於</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/frontend/" itemprop="url" rel="index">
@@ -701,7 +701,7 @@
 <p>web开发中，在controller上需要将浏览器的某个cookie删除，我们会期望response参数里面会有个removeCookie方法，但悲剧的是没有。response里面只有addCookie方法。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/03/04/Java中Spring删除cookie/#more" rel="contents">
-              閱讀全文 &raquo;
+              阅读全文 &raquo;
             </a>
           </div>
         
@@ -764,9 +764,9 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2015-01-14T17:11:23+08:00" content="1月 14 2015">
-              1月 14 2015
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-01-14T17:11:23+08:00" content="Jan 14 2015">
+              Jan 14 2015
             </time>
           </span>
 
@@ -776,7 +776,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分類於</span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/frontend/" itemprop="url" rel="index">
@@ -827,7 +827,7 @@
 <p>今天在IDEA中使用git时，git commit没问题，但是git push处于一直执行的状态，IDEA下方的进度条也是一直在跑，过了很久也没提交成功，无奈之下只有结束掉git进程。后来打开IDEA左下角中的<code>version control console</code>栏，发现里面报了如下错误</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/01/14/IntellijIDEA使用GITPush的问题/#more" rel="contents">
-              閱讀全文 &raquo;
+              阅读全文 &raquo;
             </a>
           </div>
         
@@ -902,7 +902,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">33</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
@@ -910,7 +910,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分類</span>
+                <span class="site-state-item-name">分类</span>
               
             </div>
           
@@ -919,7 +919,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">29</span>
-                <span class="site-state-item-name">標籤</span>
+                <span class="site-state-item-name">标签</span>
               </a>
             </div>
           
@@ -981,11 +981,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  主題 -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
