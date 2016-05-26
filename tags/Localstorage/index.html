@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MobileWeb," />
+  <meta name="keywords" content="Foreverpx, Javascript, Font-End" />
 
 
 
@@ -86,16 +86,15 @@
 
 
 
-<meta name="description" content="移动web开发中，我们常常会用到video标签去播放多媒体视频。但不同于pc端浏览器中使用video标签，很多属性和方法在ios中的safari是被限制的，同时也新增了一些特性，下面一一道来。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="移动web开发之——iso中的video">
-<meta property="og:url" content="http://www.foreverpx.cn/2015/12/05/mobile-video-ios/index.html">
+<meta name="description" content="程序员在囧途">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Foreverpx">
+<meta property="og:url" content="http://www.foreverpx.cn/tags/Localstorage/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="移动web开发中，我们常常会用到video标签去播放多媒体视频。但不同于pc端浏览器中使用video标签，很多属性和方法在ios中的safari是被限制的，同时也新增了一些特性，下面一一道来。">
-<meta property="og:updated_time" content="2016-02-02T10:49:50.000Z">
+<meta property="og:description" content="程序员在囧途">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动web开发之——iso中的video">
-<meta name="twitter:description" content="移动web开发中，我们常常会用到video标签去播放多媒体视频。但不同于pc端浏览器中使用video标签，很多属性和方法在ios中的safari是被限制的，同时也新增了一些特性，下面一一道来。">
+<meta name="twitter:title" content="Foreverpx">
+<meta name="twitter:description" content="程序员在囧途">
 
 
 
@@ -113,7 +112,7 @@
   };
 </script>
 
-  <title> 移动web开发之——iso中的video | Foreverpx </title>
+  <title> 标签: Localstorage | Foreverpx </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -144,7 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -232,186 +231,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                移动web开发之——iso中的video
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-05T11:41:09+08:00" content="Dec 5 2015">
-              Dec 5 2015
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">frontend</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/12/05/mobile-video-ios/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/05/mobile-video-ios/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/12/05/mobile-video-ios/" class="leancloud_visitors" data-flag-title="移动web开发之——iso中的video">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>移动web开发中，我们常常会用到video标签去播放多媒体视频。但不同于pc端浏览器中使用video标签，很多属性和方法在ios中的safari是被限制的，同时也新增了一些特性，下面一一道来。</p>
-<a id="more"></a>
-<h2 id="对于小屏幕的优化">对于小屏幕的优化</h2><p>在iphone这样的小屏幕中，当用户点击播放按钮时，总是以全屏的方式去播放视频，此时video会适配横屏和竖屏模式。由于总是以全屏播放，你会发现设置control属性之后，在video标签加载完毕后是看不到控制栏的，只有video的一张post在页面中，点击post全屏播放视频后，control才会出现。我觉得这样设定是为了能让用户具有更好的观看体验，屏幕本来就小，在如此小的屏幕下还不全屏看就太难受了。但这个设定只是针对ios中的safari，而不针对MacOs中的safari。  </p>
-<h2 id="移动网络下的用户操作">移动网络下的用户操作</h2><p>用户使用手机的时候很有可能是在移动2-4G的网络情况下，所以在ios的Safari中，video是不允许预加载和自动播放的。只有当用户手动触发开始事件之后，诸如<code>play()</code>、<code>stop()</code>这样的方法才能起作用，例如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">value</span>=<span class="value">"Play"</span> <span class="attribute">onclick</span>=<span class="value">"document.myMovie.play()"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">onload</span>=<span class="value">"document.myMovie.play()"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>像上面这段代码，在ios的safari中就不起作用。只有当用户亲自触发开始时，才能用play()函数去控制video。这样设定的目的是为了防止用户产生过高的流量费用，因为用户打开网页时，可能并没有打算去观看视频。PS: audio标签也是同样的规则。</p>
-<h2 id="ios中video的默认高度和宽度">ios中video的默认高度和宽度</h2><p>ios中，当没有指定高和宽时，video的默认高度和宽度为150*300，当video开始播放后，高和宽是不能改变的了。</p>
-<h2 id="支持的格式">支持的格式</h2><ul>
-<li><p>desktop: Safari中，media能支持的视频格式取决于系统中安装的QuickTime。</p>
-</li>
-<li><p>iphone: Safari中，media支持无损的WAV、AIF、MP3、HE-ACC、MPEG-4、H264。</p>
-</li>
-</ul>
-<h2 id="一个页面上有多个video或audio实例">一个页面上有多个video或audio实例</h2><p>现在ios中不支持一个页面同时播放两个（包含两个）以上的video或audio。</p>
-<h2 id="音量控制">音量控制</h2><ul>
-<li><p>desktop:Safari可以通过volume属性去设置media的音量，但是这个音量的范围是跟系统相关的。当设置的值为1时，音量为当前用户设置的系统音量。当设置为0时，音量为静音。其他的音量的0~1之间。</p>
-</li>
-<li><p>iphone: 在ios中，音量只受用户通过物理按键去控制，通过javascript去设置volume属性是无效的。读取volume属性会永远返回1。</p>
-</li>
-</ul>
-<h2 id="播放速率">播放速率</h2><ul>
-<li><p>desktop: 可以设置0~1的值给playbackRate属性去改变播放速率。</p>
-</li>
-<li><p>iphone: 不支持playbackRate属性。</p>
-</li>
-</ul>
-<p>更多关于safari中的媒体标签的细节请参考苹果的官网文档：<br><a href="https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW1" target="_blank" rel="external">https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW1</a></p>
-<p>原文出处：<a href="http://www.foreverpx.cn">http://www.foreverpx.cn</a><br>转载请注明出处。</p>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        Localstorage
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2016/05/26/hole-in-localstorage/" itemprop="url">
+              
+                <span itemprop="name">Localstorage使用不严谨之坑</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-05-26T17:26:47+08:00"
+              content="May 26 2016" >
+          05-26
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/MobileWeb/" rel="tag">#MobileWeb</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2015/11/21/mobile-viewport/" rel="next" title="移动web开发之——viewport">
-                <i class="fa fa-chevron-left"></i> 移动web开发之——viewport
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/02/localstorage-disabled/" rel="prev" title="localStorage在无痕模式下被禁用的问题">
-                localStorage在无痕模式下被禁用的问题 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -419,14 +278,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2015/12/05/mobile-video-ios/"
-           data-title="移动web开发之——iso中的video" data-url="http://www.foreverpx.cn/2015/12/05/mobile-video-ios/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -446,17 +297,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://avatar.csdn.net/6/4/6/1_forevercjl.jpg"
@@ -533,17 +375,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于小屏幕的优化"><span class="nav-number">1.</span> <span class="nav-text">对于小屏幕的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动网络下的用户操作"><span class="nav-number">2.</span> <span class="nav-text">移动网络下的用户操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ios中video的默认高度和宽度"><span class="nav-number">3.</span> <span class="nav-text">ios中video的默认高度和宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持的格式"><span class="nav-number">4.</span> <span class="nav-text">支持的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个页面上有多个video或audio实例"><span class="nav-number">5.</span> <span class="nav-text">一个页面上有多个video或audio实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音量控制"><span class="nav-number">6.</span> <span class="nav-text">音量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#播放速率"><span class="nav-number">7.</span> <span class="nav-text">播放速率</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -647,10 +478,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
