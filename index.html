@@ -255,6 +255,133 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/04/echarts_webpack_ie/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-04T11:45:37+08:00" content="Mar 4 2017">
+              Mar 4 2017
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/04/echarts_webpack_ie/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/echarts_webpack_ie/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/04/echarts_webpack_ie/" class="leancloud_visitors" data-flag-title="">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在IE11上开发时，发现Echart在IE11上无法渲染出来，控制台报错  SCRIPT65535: Invalid calling object</p>
+<p>错误指向的是Echart依赖的Zrender模块的requestAnimationFrame模块，指示requestAnimationFrame方法调用失败</p>
+<p>查阅MSDN关于IE兼容差异的文档，发现有一篇叫做 <a href="https://msdn.microsoft.com/library/gg622930(v=vs.85" target="_blank" rel="external">函数指针方法调用</a>.aspx) 的文章</p>
+<p>文章大意如下：</p>
+<p><code>早期版本的 Windows Internet Explorer 支持将方法的指针进行缓存并随后使用缓存的指针来调用方法。自 Windows Internet Explorer 9 开始，取消了这项支持以改善与其他浏览器的互操作性。</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.writeln;</span><br><span class="line">d(<span class="string">"&lt;script language=VBScript&gt;"</span>); <span class="comment">//error Invalid calling object</span></span><br></pre></td></tr></table></figure>
+<p><code>从 Internet Explorer 9 开始，需要有一个对象才能调用方法。默认情况下，在全局作用域中提供 window 对象（如前面示例中所示）。不过，window 对象没有 writeln 方法，因此报告 JavaScript 错误消息：“调用对象无效”。</code></p>
+<p><code>解决这个报错的方案是显示提供适当的调用对象，或使用 JavaScript 的 bind API 将隐式调用对象与该方法关联。</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d.call(<span class="built_in">document</span>, <span class="string">'&lt;script language="VBScript"&gt;'</span>);</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.writeln.bind(<span class="built_in">document</span>);</span><br><span class="line">d(<span class="string">"&lt;script language=VBScript&gt;"</span>); <span class="comment">// Now this is OK.</span></span><br></pre></td></tr></table></figure>
+<p>根据这个原理，我们稍微修改下requestAnimationFrame模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//requestAnimationFrame.js 模块</span></span><br><span class="line"><span class="built_in">module</span>.exports = (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp;</span><br><span class="line">                                (<span class="built_in">window</span>.requestAnimationFrame</span><br><span class="line">                                || <span class="built_in">window</span>.msRequestAnimationFrame</span><br><span class="line">                                || <span class="built_in">window</span>.mozRequestAnimationFrame</span><br><span class="line">                                || <span class="built_in">window</span>.webkitRequestAnimationFrame))</span><br><span class="line">                            || <span class="function"><span class="keyword">function</span> (<span class="params">func</span>) </span>&#123;</span><br><span class="line">                                setTimeout(func, <span class="number">16</span>);</span><br><span class="line">                            &#125;;</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//requestAnimationFrame.js 模块</span></span><br><span class="line"><span class="built_in">module</span>.exports = (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp;</span><br><span class="line">                                (<span class="built_in">window</span>.requestAnimationFrame</span><br><span class="line">                                || <span class="built_in">window</span>.msRequestAnimationFrame.bind(<span class="built_in">window</span>)</span><br><span class="line">                                || <span class="built_in">window</span>.mozRequestAnimationFrame</span><br><span class="line">                                || <span class="built_in">window</span>.webkitRequestAnimationFrame))</span><br><span class="line">                            || <span class="function"><span class="keyword">function</span> (<span class="params">func</span>) </span>&#123;</span><br><span class="line">                                setTimeout(func, <span class="number">16</span>);</span><br><span class="line">                            &#125;;</span><br></pre></td></tr></table></figure>
+<p>即可解决。</p>
+<p>不过，解决这个问题还有另一个方法。</p>
+<p>在webpack的配置中，我们在开发环境使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">devtool: <span class="string">'eval-source-map'</span></span><br></pre></td></tr></table></figure>
+<p>来定位错误，去掉eval方式亦可解决此问题，不过原因不详，还有待探究。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/02/18/zepto跨域ajax无法带cookie的问题/" itemprop="url">
                   zepto跨域ajax无法带cookie的问题
                 </a>
@@ -775,137 +902,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/26/hole-in-localstorage/" itemprop="url">
-                  Localstorage使用不严谨之坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T17:26:47+08:00" content="May 26 2016">
-              May 26 2016
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">frontend</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/26/hole-in-localstorage/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/26/hole-in-localstorage/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/26/hole-in-localstorage/" class="leancloud_visitors" data-flag-title="Localstorage使用不严谨之坑">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>今天上线新版本后，发现极个别“老”用户在微信浏览器中无法打开我们网站的首页。在经过一番线上文件代理替<br>换后，终于发现了问题所在。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/26/hole-in-localstorage/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -951,7 +947,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
