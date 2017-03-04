@@ -96,7 +96,7 @@ withCredentials这个参数是为了">
 <meta property="og:description" content="在A域的代码中，用zepto的ajax方法去向B域请求数据。同时，我们希望把B域的cookie也随请求带过去，代码如下
 1234567$.ajax(&amp;#123;    url: &apos;B&apos;,    type: &apos;GET&apos;,    xhrFields: &amp;#123;        withCredentials: true    &amp;#125;&amp;#125;);
 withCredentials这个参数是为了">
-<meta property="og:updated_time" content="2017-02-27T09:28:36.000Z">
+<meta property="og:updated_time" content="2017-03-04T03:54:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zepto跨域ajax无法带cookie的问题">
 <meta name="twitter:description" content="在A域的代码中，用zepto的ajax方法去向B域请求数据。同时，我们希望把B域的cookie也随请求带过去，代码如下
@@ -338,6 +338,7 @@ withCredentials这个参数是为了">
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'B'</span>,</span><br><span class="line">    type: <span class="string">'GET'</span>,</span><br><span class="line">    xhrFields: &#123;</span><br><span class="line">        withCredentials: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>withCredentials这个参数是为了让XMLHttpRequest发起跨域请求的时候，能带上目标域的cookie。</p>
 <p>这在使用jquery的时候并没有问题，但是使用zepto的时候，发现cookie并没有被带上。</p>
+<a id="more"></a>
 <p>在官方文档中，关于ajax的部分是这样写的</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">xhrFields (default: none): an object containing properties to be copied over verbatim to the XMLHttpRequest instance. v1.1+</span><br></pre></td></tr></table></figure>
 <p>意思是可以在options里面设置xhrFields的相关属性，比如上面提到的withCredentials。值得注意的是，后面标注了实现版本是1.1+。我们目前使用的是1.1.1，按理说应该是支持的。</p>
