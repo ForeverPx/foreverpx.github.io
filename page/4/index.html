@@ -92,6 +92,7 @@
 <meta property="og:url" content="http://www.foreverpx.cn/page/4/index.html">
 <meta property="og:site_name" content="Foreverpx">
 <meta property="og:description" content="程序员在囧途">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Foreverpx">
 <meta name="twitter:description" content="程序员在囧途">
@@ -255,6 +256,141 @@
             
               
                 
+                <a class="post-title-link" href="/2015/11/21/mobile-viewport/" itemprop="url">
+                  移动web开发之——viewport
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-21T11:41:09+08:00" content="Nov 21 2015">
+              Nov 21 2015
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">frontend</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/21/mobile-viewport/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/mobile-viewport/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/21/mobile-viewport/" class="leancloud_visitors" data-flag-title="移动web开发之——viewport">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在绝大多数移动端的web页面中，head标签里面都会有这样一行代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然而PC端的页面中却不怎么出现。那么这个<code>viewport</code>的作用是什么呢？</p>
+<p><code>viewport</code>根据字面翻译，为视窗，窗口。<code>viewport</code>的宽度决定了<code>html</code>这个标签的宽度。<code>viewport</code>又分为<code>visual viewport</code>(可视窗口）和<code>layout viewport</code>（布局窗口）。</p>
+<p>可以想象如下一种场景，你做在电影院的某一排看电影，荧幕的大小肯定是固定的，此时荧幕的大小就相当于<code>layout viewport</code>。你的眼睛的视野范围就可以理解为<code>visual viewport</code>，这个范围取决于你离屏幕的距离，离荧幕越近，你看到的屏幕范围就越小，就看不全，离的越远，你看到的屏幕就更加全。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/21/mobile-viewport/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/11/10/ie8-hover-transparent/" itemprop="url">
                   IE8下元素背景为透明时，hover事件失效的bug
                 </a>
@@ -334,8 +470,8 @@
       
         
           <p>在IE8下，当一个div设置了背景为透明或者不设置任何背景时，在该div上注册的hover事件是不会触发的。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">'outer'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">'inner'</span>&gt;</span></span><br><span class="line">        此处有文字</span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.outer</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.outer</span><span class="pseudo">:hover</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#000000</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'outer'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'inner'</span>&gt;</span></span><br><span class="line">        此处有文字</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.outer</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:<span class="number">#000000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/11/10/ie8-hover-transparent/#more" rel="contents">
               阅读全文 &raquo;
@@ -466,8 +602,8 @@
 
       
         
-          <h2 id="什么是sql注入？">什么是sql注入？</h2><p>简单来说，sql注入就是你写的sql执行了你并不期望执行的数据查询逻辑。</p>
-<p>下面来看一个简单的例子。有一个url请求如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.foreverpx.cn/blogs?id=<span class="number">123456</span></span><br></pre></td></tr></table></figure></p>
+          <p>##什么是sql注入？<br>简单来说，sql注入就是你写的sql执行了你并不期望执行的数据查询逻辑。</p>
+<p>下面来看一个简单的例子。有一个url请求如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.foreverpx.cn/blogs?id=123456</span><br></pre></td></tr></table></figure></p>
 <p>上面这个请求的功能是通过id获得某篇blog的数据，sql注入就可以从这里开始。</p>
 <p>我们将<code>id=123456</code>替换掉：<br>
           <div class="post-more-link text-center">
@@ -731,143 +867,9 @@
 
       
         
-          <h2 id="前言">前言</h2><p>十一将至时，本来是准备在家睡睡懒觉、看书、玩游戏宅过的。但是有个人说一定要出去走走，态度非常坚定，所以我也就从了。<br>然后问题就来了，去哪？成都？杭州？都不是，最终选择了一个国庆人流量爆炸的首都北京，选择北京多半也是受了阅兵的影响，毕竟阅兵<br>时北京的天气是非常好的。从小到大都只是在电视中看过故宫，长城，想着能亲自去看看实景也不错。于是在携程上定了机票，报了个北京的地团。</p>
+          <p>##前言<br>十一将至时，本来是准备在家睡睡懒觉、看书、玩游戏宅过的。但是有个人说一定要出去走走，态度非常坚定，所以我也就从了。<br>然后问题就来了，去哪？成都？杭州？都不是，最终选择了一个国庆人流量爆炸的首都北京，选择北京多半也是受了阅兵的影响，毕竟阅兵<br>时北京的天气是非常好的。从小到大都只是在电视中看过故宫，长城，想着能亲自去看看实景也不错。于是在携程上定了机票，报了个北京的地团。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/10/19/travel-beijing/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/25/入世与出世/" itemprop="url">
-                  入世与出世
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-25T17:51:48+08:00" content="Sep 25 2015">
-              Sep 25 2015
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/live/" itemprop="url" rel="index">
-                    <span itemprop="name">live</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/25/入世与出世/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/入世与出世/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/09/25/入世与出世/" class="leancloud_visitors" data-flag-title="入世与出世">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="读圣凯法师“入世与出世”有感。">读圣凯法师“入世与出世”有感。</h2><p>入世即是我们所面对的生活，柴米油盐酱醋茶，衣食住行，行住坐卧。</p>
-<p>出世即解脱，不是驾鹤西去，而是自我解脱。无关生死，不管世间痛苦，俗话说就是看开了。</p>
-<p>其实我们每天都生活在痛苦之中，有的人是生理上的痛，如头痛、脚痛等病痛。有的人是内心痛，往往是由于现实没有达到我们欲望的值。你说你不痛，那只是你没有感觉到而已。</p>
-<p>今天看了一个比较认同的问答。问：为什么要学佛呢？答：我们的家庭，起心动念都是入世。学佛是为了追求人生解脱，这就是出世。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/09/25/入世与出世/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -942,7 +944,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

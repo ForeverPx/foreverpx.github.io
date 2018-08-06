@@ -87,11 +87,13 @@
 
 
 <meta name="description" content="nightmare是一个高级的浏览器自动化代码库。它的主要目标是使用一些简单的方法就能自动的模拟用户日常在浏览器中的操作。比如你平时打开浏览器，然后在搜索框中输入内容，再点击搜索按钮进行搜索。nightmare能自动执行上述步骤，并拿到执行结果，也就是搜索结果。通过它可以轻松实现自动化测试。">
+<meta name="keywords" content="Nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nightmare 浏览器自动化工具">
 <meta property="og:url" content="http://www.foreverpx.cn/2015/10/20/nightmare/index.html">
 <meta property="og:site_name" content="Foreverpx">
 <meta property="og:description" content="nightmare是一个高级的浏览器自动化代码库。它的主要目标是使用一些简单的方法就能自动的模拟用户日常在浏览器中的操作。比如你平时打开浏览器，然后在搜索框中输入内容，再点击搜索按钮进行搜索。nightmare能自动执行上述步骤，并拿到执行结果，也就是搜索结果。通过它可以轻松实现自动化测试。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-02-02T10:48:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nightmare 浏览器自动化工具">
@@ -330,10 +332,11 @@
       
         <p><code>nightmare</code>是一个高级的浏览器自动化代码库。<br>它的主要目标是使用一些简单的方法就能自动的模拟用户日常在浏览器中的操作。<br>比如你平时打开浏览器，然后在搜索框中输入内容，再点击搜索按钮进行搜索。<br><code>nightmare</code>能自动执行上述步骤，并拿到执行结果，也就是搜索结果。<br>通过它可以轻松实现自动化测试。</p>
 <a id="more"></a>
-<h2 id="示例">示例</h2><p>以搜索雅虎为例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Nightmare = <span class="built_in">require</span>(<span class="string">'nightmare'</span>);</span><br><span class="line"><span class="keyword">yield</span> Nightmare()</span><br><span class="line">  .goto(<span class="string">'http://yahoo.com'</span>)</span><br><span class="line">  .type(<span class="string">'input[title="Search"]'</span>, <span class="string">'github nightmare'</span>)</span><br><span class="line">  .click(<span class="string">'.searchsubmit'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>##示例</p>
+<p>以搜索雅虎为例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Nightmare = <span class="built_in">require</span>(<span class="string">'nightmare'</span>);</span><br><span class="line"><span class="keyword">yield</span> Nightmare()</span><br><span class="line">  .goto(<span class="string">'http://yahoo.com'</span>)</span><br><span class="line">  .type(<span class="string">'input[title="Search"]'</span>, <span class="string">'github nightmare'</span>)</span><br><span class="line">  .click(<span class="string">'.searchsubmit'</span>);</span><br></pre></td></tr></table></figure></p>
 <p>我们可以利用它来做一些自动化测试：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> Nightmare = <span class="built_in">require</span>(<span class="string">'nightmare'</span>);</span><br><span class="line"><span class="keyword">var</span> expect = <span class="built_in">require</span>(<span class="string">'chai'</span>).expect;</span><br><span class="line"></span><br><span class="line">describe(<span class="string">'test yahoo search results'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  it(<span class="string">'should find the nightmare github link first'</span>, <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nightmare = Nightmare()</span><br><span class="line">    <span class="keyword">var</span> breadcrumb = <span class="keyword">yield</span> nightmare</span><br><span class="line">      .goto(<span class="string">'http://yahoo.com'</span>)</span><br><span class="line">      .type(<span class="string">'input[title="Search"]'</span>, <span class="string">'github nightmare'</span>)</span><br><span class="line">      .click(<span class="string">'.searchsubmit'</span>)</span><br><span class="line">      .wait(<span class="string">'.url.breadcrumb'</span>)</span><br><span class="line">      .evaluate(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(<span class="string">'.url.breadcrumb'</span>).innerText;</span><br><span class="line">      &#125;);</span><br><span class="line">    expect(breadcrumb).to.equal(<span class="string">'github.com'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>通过上面的代码我们可以自动判断搜索的结果是否符合我们预期。<br>在我们的日常开发中，可以利用这个工具对我们的交互逻辑进行自动化测试。</p>
-<h2 id="项目主页">项目主页</h2><p>更多的API和文档可以在<code>nightmare</code>的主页中查看：<br><a href="https://github.com/segmentio/nightmare" target="_blank" rel="external">https://github.com/segmentio/nightmare</a></p>
+<p>##项目主页<br>更多的API和文档可以在<code>nightmare</code>的主页中查看：<br><a href="https://github.com/segmentio/nightmare" target="_blank" rel="noopener">https://github.com/segmentio/nightmare</a></p>
 
       
     </div>
@@ -446,7 +449,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -519,7 +522,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">1.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目主页"><span class="nav-number">2.</span> <span class="nav-text">项目主页</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

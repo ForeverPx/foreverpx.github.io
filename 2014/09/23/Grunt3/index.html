@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Grunt,Javascript,单元测试,自动化," />
+  <meta name="keywords" content="Javascript,自动化,Grunt,单元测试," />
 
 
 
@@ -86,25 +86,18 @@
 
 
 
-<meta name="description" content="​### Grunt入门教程之三
-Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。
-我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。
-下面介绍一下如何在Grunt中使用Yuidoc。">
+<meta name="description" content="​### Grunt入门教程之三 Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。 我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。 下面介绍一下如何在Grunt中使用Yuidoc。">
+<meta name="keywords" content="Javascript,自动化,Grunt,单元测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Grunt入门教程之（三）">
 <meta property="og:url" content="http://www.foreverpx.cn/2014/09/23/Grunt3/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="​### Grunt入门教程之三
-Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。
-我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。
-下面介绍一下如何在Grunt中使用Yuidoc。">
+<meta property="og:description" content="​### Grunt入门教程之三 Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。 我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。 下面介绍一下如何在Grunt中使用Yuidoc。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2014-11-27T11:02:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grunt入门教程之（三）">
-<meta name="twitter:description" content="​### Grunt入门教程之三
-Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。
-我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。
-下面介绍一下如何在Grunt中使用Yuidoc。">
+<meta name="twitter:description" content="​### Grunt入门教程之三 Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。 我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。 下面介绍一下如何在Grunt中使用Yuidoc。">
 
 
 
@@ -338,15 +331,15 @@ Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具
 
       
         <p>​### Grunt入门教程之三</p>
-<h3 id="Yuidoc插件">Yuidoc插件</h3><p>Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。</p>
+<h3 id="Yuidoc插件"><a href="#Yuidoc插件" class="headerlink" title="Yuidoc插件"></a>Yuidoc插件</h3><p>Yuidoc 是一个可以将代码注释生成HTML格式文档的工具，文档的生成完全基于JavaDoc风格的代码注释规则。</p>
 <p>我们在写公共模块或者API的时候，往往会输出文档给调用者查看，这时候Yuidoc就是一个很好的助手。</p>
 <p>下面介绍一下如何在Grunt中使用Yuidoc。</p>
 <a id="more"></a>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">grunt.initConfig(&#123;</span><br><span class="line">  pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),</span><br><span class="line">  yuidoc: &#123;</span><br><span class="line">    compile: &#123;</span><br><span class="line">      name: <span class="string">'&lt;%= pkg.name %&gt;'</span>,</span><br><span class="line">      description: <span class="string">'&lt;%= pkg.description %&gt;'</span>,</span><br><span class="line">      version: <span class="string">'&lt;%= pkg.version %&gt;'</span>,</span><br><span class="line">      url: <span class="string">'&lt;%= pkg.homepage %&gt;'</span>,</span><br><span class="line">      options: &#123;</span><br><span class="line">        paths: <span class="string">'path/to/source/code/'</span>,</span><br><span class="line">        themedir: <span class="string">'path/to/custom/theme/'</span>,</span><br><span class="line">        outdir: <span class="string">'where/to/save/docs/'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>compile中前四个属性比较容易理解，分别为“名字”，“描述”，“版本”，“项目主页URL”。</p>
-<p>options中的属性跟yuidoc本身的属性有关，不局限于示例代码中的三个，更多的属性请参见<a href="http://yui.github.io/yuidoc/args/index.html" target="_blank" rel="external">Yuidoc文档</a></p>
+<p>options中的属性跟yuidoc本身的属性有关，不局限于示例代码中的三个，更多的属性请参见<a href="http://yui.github.io/yuidoc/args/index.html" target="_blank" rel="noopener">Yuidoc文档</a></p>
 <p>path: 代码源文件存放路径<br>themedir：生成的HTML样式的存放路径<br>outdir：生成的HTML doc文档的存放路径</p>
-<p><a href="https://www.npmjs.org/package/grunt-contrib-yuidoc" target="_blank" rel="external">grunt-contrib-yuidoc</a></p>
+<p><a href="https://www.npmjs.org/package/grunt-contrib-yuidoc" target="_blank" rel="noopener">grunt-contrib-yuidoc</a></p>
 <p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/09/23/Grunt3">Grunt入门教程之三 </a></p>
 
       
@@ -369,13 +362,13 @@ Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具
       
         <div class="post-tags">
           
-            <a href="/tags/Grunt/" rel="tag">#Grunt</a>
-          
             <a href="/tags/Javascript/" rel="tag">#Javascript</a>
           
-            <a href="/tags/单元测试/" rel="tag">#单元测试</a>
-          
             <a href="/tags/自动化/" rel="tag">#自动化</a>
+          
+            <a href="/tags/Grunt/" rel="tag">#Grunt</a>
+          
+            <a href="/tags/单元测试/" rel="tag">#单元测试</a>
           
         </div>
       
@@ -466,7 +459,7 @@ Yuidoc插件Yuidoc 是一个可以将代码注释生成HTML格式文档的工具
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

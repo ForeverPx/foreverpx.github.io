@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="​Highcharts使用phantomjs导出图片
-描述在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候我们并">
+<meta name="description" content="​Highcharts使用phantomjs导出图片 ##描述 在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候">
+<meta name="keywords" content="Highcharts，Nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Highcharts使用phantomjs导出图片">
 <meta property="og:url" content="http://www.foreverpx.cn/2014/12/25/Highcharts使用phantomjs导出截图/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="​Highcharts使用phantomjs导出图片
-描述在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候我们并">
+<meta property="og:description" content="​Highcharts使用phantomjs导出图片 ##描述 在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2014-12-26T11:51:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Highcharts使用phantomjs导出图片">
-<meta name="twitter:description" content="​Highcharts使用phantomjs导出图片
-描述在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候我们并">
+<meta name="twitter:description" content="​Highcharts使用phantomjs导出图片 ##描述 在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候">
 
 
 
@@ -332,14 +331,15 @@
 
       
         <p>​<a href="http://www.foreverpx.cn/2014/12/25/Highcharts使用phantomjs导出图片">Highcharts使用phantomjs导出图片</a></p>
-<h2 id="描述">描述</h2><p>在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候我们并不想把我们的数据信息暴露给他们，所以我们必须在我们自己的服务器上完成转化的服务。</p>
+<p>##描述</p>
+<p>在用Highcharts这个强大的图标组件时，你一定在某些时刻想把画出来的图标导出为一个图片并下载到本地。Highcharts本身提供了导出功能，只需要导入exporting.js文件，就可以在图表右上角找到导出按钮了。这已经基本满足的大多数情况我们的需求。但是这原始到导出是发送请求到Highcharts的服务器上进行转化的，很多时候我们并不想把我们的数据信息暴露给他们，所以我们必须在我们自己的服务器上完成转化的服务。</p>
 <a id="more"></a>
-<h2 id="步骤一：phantomjs">步骤一：phantomjs</h2><p>Highcharts的下载文件中有个exporting-server文件夹，里面是Highcharts提供的一系列转换方案，有java，phantomjs和php的。在这里，只讲述nodejs+phantomjs的方案。</p>
-<h3 id="什么是phantomjs？">什么是phantomjs？</h3><p><a href="http://phantomjs.org" target="_blank" rel="external">phantomjs</a>可以看做是一个不带gui的浏览器，他的内核也是webkit，我们一般用它来加载网页去解析dom并获取数据，或者是利用他来对网页进行截图。下载完phantomjs并解压后，将exporting-server文件夹中的phantomjs文件夹拷贝到解压后的根目录下。并执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phantomjs ./phantomjs/highcharts-convert.js -host <span class="number">127.0</span>.<span class="number">0.1</span> -port <span class="number">3003</span></span><br></pre></td></tr></table></figure></p>
+<p>##步骤一：phantomjs<br>Highcharts的下载文件中有个exporting-server文件夹，里面是Highcharts提供的一系列转换方案，有java，phantomjs和php的。在这里，只讲述nodejs+phantomjs的方案。</p>
+<h3 id="什么是phantomjs？"><a href="#什么是phantomjs？" class="headerlink" title="什么是phantomjs？"></a>什么是phantomjs？</h3><p><a href="http://phantomjs.org" target="_blank" rel="noopener">phantomjs</a>可以看做是一个不带gui的浏览器，他的内核也是webkit，我们一般用它来加载网页去解析dom并获取数据，或者是利用他来对网页进行截图。下载完phantomjs并解压后，将exporting-server文件夹中的phantomjs文件夹拷贝到解压后的根目录下。并执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phantomjs ./phantomjs/highcharts-convert.js -host 127.0.0.1 -port 3003</span><br></pre></td></tr></table></figure></p>
 <p>执行上面的代码后，会开启一个服务器并监听3003端口。这个服务器用来接收我们发送的图表数据，并最终将生成的图片路径放回给我们。</p>
-<h2 id="步骤二：获取svg数据并发送给nodejs_Server端">步骤二：获取svg数据并发送给nodejs Server端</h2><p>浏览器端代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    infile:$(<span class="string">'#container'</span>).highcharts().getSVG(),</span><br><span class="line">    constr:<span class="string">"Chart"</span>, <span class="comment">//图表类型</span></span><br><span class="line">    outfile:<span class="string">"E://chart.png"</span> <span class="comment">//需要存储的文件路径</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">"http://localhost:3000/highchartsConvert"</span>,</span><br><span class="line">    type: <span class="string">'POST'</span>,</span><br><span class="line">    dataType: <span class="string">'json'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        data:<span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">rData</span>)</span>&#123;</span><br><span class="line">   download(rData);  <span class="comment">//rData为返回的图片路径，如果转换成功的话，跟outfile的值一样</span></span><br><span class="line">   <span class="comment">//download方法为将文件名或路径传递到后台，然后nodejs实现文件下载功能，这里省略</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>##步骤二：获取svg数据并发送给nodejs Server端<br>浏览器端代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    infile:$(<span class="string">'#container'</span>).highcharts().getSVG(),</span><br><span class="line">    constr:<span class="string">"Chart"</span>, <span class="comment">//图表类型</span></span><br><span class="line">    outfile:<span class="string">"E://chart.png"</span> <span class="comment">//需要存储的文件路径</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">"http://localhost:3000/highchartsConvert"</span>,</span><br><span class="line">    type: <span class="string">'POST'</span>,</span><br><span class="line">    dataType: <span class="string">'json'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        data:<span class="built_in">JSON</span>.stringify(obj)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">rData</span>)</span>&#123;</span><br><span class="line">   download(rData);  <span class="comment">//rData为返回的图片路径，如果转换成功的话，跟outfile的值一样</span></span><br><span class="line">   <span class="comment">//download方法为将文件名或路径传递到后台，然后nodejs实现文件下载功能，这里省略</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>nodejs端:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">"/highchartsConvert"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res,next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reqData = <span class="built_in">JSON</span>.parse(req.body.data);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//发送到phantomjs转换服务器</span></span><br><span class="line">    <span class="keyword">var</span> options = &#123;</span><br><span class="line">        hostname: <span class="string">"localhost"</span>,</span><br><span class="line">        port: <span class="string">"3001"</span>,</span><br><span class="line">        path:<span class="string">""</span>,</span><br><span class="line">        method: <span class="string">"POST"</span>,</span><br><span class="line">        headers: &#123;</span><br><span class="line">            <span class="string">"Content-Type"</span>: <span class="string">'application/json;charset=utf-8'</span>,</span><br><span class="line">            <span class="string">"Content-Length"</span>:reqData.length</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> req = http.request(options,<span class="function"><span class="keyword">function</span>(<span class="params">ress</span>)</span>&#123;</span><br><span class="line">        ress.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            res.send(data);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    req.write(reqData+<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">    req.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="总结">总结</h2><p>整个转换过程走了两个服务器，首先将图表数据发送到nodejs端，然后再转发到phantomjs的服务器。中间用node中转一下是因为要进行某些验证。<br>下面是可以传的参数列表：</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个转换过程走了两个服务器，首先将图表数据发送到nodejs端，然后再转发到phantomjs的服务器。中间用node中转一下是因为要进行某些验证。<br>下面是可以传的参数列表：</p>
 <ul>
 <li>infile：图表的svg代码或者options</li>
 <li>outfile：输出图片的路径+文件名</li>
@@ -348,7 +348,7 @@
 <li>height：图表在phantomjs中渲染的高度</li>
 <li>callback：图表在phantomjs中渲染完成后执行</li>
 </ul>
-<p>更多信息请参考<br><a href="http://www.highcharts.com/component/content/article/2-news/52-serverside-generated-charts/" target="_blank" rel="external">RENDER CHARTS ON THE SERVER</a><br><a href="http://www.highcharts.com/component/content/article/2-news/56-improved-image-export-with-phantomjs" target="_blank" rel="external">IMPROVED IMAGE EXPORT WITH PHANTOMJS</a></p>
+<p>更多信息请参考<br><a href="http://www.highcharts.com/component/content/article/2-news/52-serverside-generated-charts/" target="_blank" rel="noopener">RENDER CHARTS ON THE SERVER</a><br><a href="http://www.highcharts.com/component/content/article/2-news/56-improved-image-export-with-phantomjs" target="_blank" rel="noopener">IMPROVED IMAGE EXPORT WITH PHANTOMJS</a></p>
 <p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/12/25/Highcharts使用phantomjs导出图片">Highcharts使用phantomjs导出图片</a></p>
 
       
@@ -462,7 +462,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +535,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤一：phantomjs"><span class="nav-number">2.</span> <span class="nav-text">步骤一：phantomjs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是phantomjs？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是phantomjs？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤二：获取svg数据并发送给nodejs_Server端"><span class="nav-number">3.</span> <span class="nav-text">步骤二：获取svg数据并发送给nodejs Server端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是phantomjs？"><span class="nav-number">1.</span> <span class="nav-text">什么是phantomjs？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></div>
             
           </div>
         </section>

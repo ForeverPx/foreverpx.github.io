@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Chrome,Html5,ServiceWorkers," />
+  <meta name="keywords" content="Html5,Chrome,ServiceWorkers," />
 
 
 
@@ -86,24 +86,21 @@
 
 
 
-<meta name="description" content="初识ServiceWorker
-在8月份的时候，W3C更新了一个叫Service Workers的API。
-了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。">
+<meta name="description" content="初识ServiceWorker 在8月份的时候，W3C更新了一个叫Service Workers的API。 了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。">
+<meta name="keywords" content="Html5,Chrome,ServiceWorkers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识ServiceWorker">
 <meta property="og:url" content="http://www.foreverpx.cn/2014/09/28/初识ServiceWorker/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="初识ServiceWorker
-在8月份的时候，W3C更新了一个叫Service Workers的API。
-了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。">
+<meta property="og:description" content="初识ServiceWorker 在8月份的时候，W3C更新了一个叫Service Workers的API。 了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/005yyi5Jjw1eksg4sotwdj30qf03haau.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/005yyi5Jjw1eksg6mbcfjj30s9042wey.jpg">
 <meta property="og:updated_time" content="2014-09-29T01:28:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识ServiceWorker">
-<meta name="twitter:description" content="初识ServiceWorker
-在8月份的时候，W3C更新了一个叫Service Workers的API。
-了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。">
+<meta name="twitter:description" content="初识ServiceWorker 在8月份的时候，W3C更新了一个叫Service Workers的API。 了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/005yyi5Jjw1eksg4sotwdj30qf03haau.jpg">
 
 
 
@@ -337,7 +334,7 @@
 
       
         <p><a href="http://www.foreverpx.cn/2014/09/28/初识ServiceWorker">初识ServiceWorker</a></p>
-<p>在8月份的时候，W3C更新了一个叫<a href="http://www.w3.org/TR/2014/WD-service-workers-20140508/#introduction" target="_blank" rel="external">Service Workers</a>的API。</p>
+<p>在8月份的时候，W3C更新了一个叫<a href="http://www.w3.org/TR/2014/WD-service-workers-20140508/#introduction" target="_blank" rel="noopener">Service Workers</a>的API。</p>
 <p>了解过HTML5中的Web Worker的人可能会对这个API会更容易理解一些，不然的话会将这两个API搞混。</p>
 <a id="more"></a>
 <p>其实，Service Worker是基于Web Worker的事件驱动的，他们执行的机制都是新开一个线程去处理一些额外的，以前不能直接处理的任务。对于Web Worker，我们可以使用它来进行复杂的计算，因为它并不阻塞浏览器主线程的渲染。而Service Worker，我们可以用它来进行本地缓存，相当于一个本地的proxy。说起缓存，我们会想起我们常用的一些缓存技术来缓存我们的静态资源，但是老的方式是不支持调试的，灵活性不高。使用Service Worker来进行缓存，我们可以用javascript代码来拦截浏览器的http请求，并设置缓存的文件，直接返回，不经过web服务器，然后，做更多你想做的事情。</p>
@@ -345,7 +342,7 @@
 <p>如果我们使用了Service Worker做缓存，浏览器http请求会先经过Service Worker，通过url mapping去匹配，如果匹配到了，则使用缓存数据，如果匹配失败，则继续执行你指定的动作。一般情况下，匹配失败则让页面显示“网页无法打开”。</p>
 <p>上面是Service Worker的基本使用场景，当然，不仅仅局限于数据缓存。<br>s<br>下面来看一个简单的示例：</p>
 <p>/index.html</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="comment">// scope defaults to "/*"</span></span><br><span class="line">        navigator.serviceWorker.register(<span class="string">"/service-worker.js"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">serviceWorker</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"success!"</span>);</span><br><span class="line">            <span class="comment">// To use the serviceWorker immediately,</span></span><br><span class="line">            <span class="comment">// you might call window.location.reload()</span></span><br><span class="line">        &#125;);</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">// scope defaults to "/*"</span></span></span><br><span class="line"><span class="javascript">        navigator.serviceWorker.register(<span class="string">"/service-worker.js"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">serviceWorker</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">"success!"</span>);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// To use the serviceWorker immediately,</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// you might call window.location.reload()</span></span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>在chrome中的console中输入navigator.serviceWorker你会发现返回的undefined。这可能是因为你chrome的版本小于36，或者你没有打开这个功能。所以先确保你的chrome升级到了36以上。然后进入<strong>chrome://flags/</strong>中将ServiceWorker开关打开，如下图：<br><img src="http://ww2.sinaimg.cn/large/005yyi5Jjw1eksg4sotwdj30qf03haau.jpg" alt="ServiceWorker"><br>确保以上两个步骤都完成后，就可以在控制台看到返回值：<br><img src="http://ww3.sinaimg.cn/large/005yyi5Jjw1eksg6mbcfjj30s9042wey.jpg" alt="ServiceWorker"></p>
 <p>上面的代码中，给serviceWorker注册了一个叫service-worker.js的文件，这里采用的promise写法。当注册成功后，会执行then里面的回调函数。</p>
 <p>下面看看service-worker.js</p>
@@ -356,9 +353,9 @@
 <p>通过e.request去匹配缓存中的静态文件，如果匹配到，则将这个缓存文件返回，如果未匹配到，则被catch获取，将请求释放（去请求真正的服务器），并将这个新文件缓存到全局cache。这里也是用到了promise写法。</p>
 <p>在我看来，用ServiceWorker做缓存就相当于一个proxy，可以拦截http请求，这样你可以对请求做一下定制化的需求。即使在无网络的情况下，ServiceWorker也可以被当做一个http服务器一样返回前端所需要的数据。</p>
 <p>上面是我对ServiceWorker的一些参考和理解。目前相关的中英文资料还比较少，主要还是得看W3C的介绍。</p>
-<p>参考资料：<br><a href="http://www.serviceworker.org/#" target="_blank" rel="external">ServiceWorker简单例子</a></p>
-<p><a href="https://github.com/w3c-webmob/ServiceWorkersDemos" target="_blank" rel="external">Github上一些代码</a></p>
-<p><a href="http://www.w3.org/TR/2014/WD-service-workers-20140508/#introduction" target="_blank" rel="external">W3C ServiceWorkers</a></p>
+<p>参考资料：<br><a href="http://www.serviceworker.org/#" target="_blank" rel="noopener">ServiceWorker简单例子</a></p>
+<p><a href="https://github.com/w3c-webmob/ServiceWorkersDemos" target="_blank" rel="noopener">Github上一些代码</a></p>
+<p><a href="http://www.w3.org/TR/2014/WD-service-workers-20140508/#introduction" target="_blank" rel="noopener">W3C ServiceWorkers</a></p>
 <p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/09/28/初识ServiceWorker">初识ServiceWorker</a></p>
 
       
@@ -381,9 +378,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Chrome/" rel="tag">#Chrome</a>
-          
             <a href="/tags/Html5/" rel="tag">#Html5</a>
+          
+            <a href="/tags/Chrome/" rel="tag">#Chrome</a>
           
             <a href="/tags/ServiceWorkers/" rel="tag">#ServiceWorkers</a>
           
@@ -476,7 +473,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Express,NodeJs," />
+  <meta name="keywords" content="NodeJs,Express," />
 
 
 
@@ -86,22 +86,18 @@
 
 
 
-<meta name="description" content="​Express文件上传之Multer
-Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在busboy的基础上开发的。
-在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。">
+<meta name="description" content="​Express文件上传之Multer Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在busboy的基础上开发的。 在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。">
+<meta name="keywords" content="NodeJs,Express">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Express文件上传之Multer">
 <meta property="og:url" content="http://www.foreverpx.cn/2014/11/27/Express文件上传之Multer/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="​Express文件上传之Multer
-Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在busboy的基础上开发的。
-在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。">
+<meta property="og:description" content="​Express文件上传之Multer Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在busboy的基础上开发的。 在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2014-11-27T11:39:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Express文件上传之Multer">
-<meta name="twitter:description" content="​Express文件上传之Multer
-Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在busboy的基础上开发的。
-在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。">
+<meta name="twitter:description" content="​Express文件上传之Multer Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在busboy的基础上开发的。 在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。">
 
 
 
@@ -335,19 +331,19 @@ Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也
 
       
         <p>​Express文件上传之Multer</p>
-<p>Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在<a href="https://github.com/mscdex/busboy" target="_blank" rel="external">busboy</a>的基础上开发的。</p>
+<p>Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在<a href="https://github.com/mscdex/busboy" target="_blank" rel="noopener">busboy</a>的基础上开发的。</p>
 <p>在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。</p>
 <a id="more"></a>
-<h2 id="安装">安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install multer --save</span><br></pre></td></tr></table></figure>
-<h2 id="基本用法">基本用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">'multer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line">app.use(multer(&#123; dest: <span class="string">'./uploads/'</span>&#125;))</span><br></pre></td></tr></table></figure>
+<p>##安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install multer --save</span><br></pre></td></tr></table></figure></p>
+<p>##基本用法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">'multer'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line">app.use(multer(&#123; <span class="attr">dest</span>: <span class="string">'./uploads/'</span>&#125;))</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.use(<span class="function"><span class="keyword">function</span>(<span class="params">req,res,next</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(req.files); <span class="comment">//JSON Object</span></span><br><span class="line">	next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>从上面的代码可以看到，multer作为一个中间件传入了app.use，当有上传请求到来时，express会拦截此请求并通过multer组件完成上传操作。在multer初始化方法中传入的是配置对象，我们可以在里面配置我们自定义的参数，例如“文件大小限制”，“文件数量限制”等等。</p>
 <p>不仅可以添加限制，还能给上传注册事件，例如：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上传开始时触发</span></span><br><span class="line">onFileUploadStart:<span class="function"><span class="keyword">function</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"upload start"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//上传结束时触发</span></span><br><span class="line">onFileUploadComplete:<span class="function"><span class="keyword">function</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"upload complete"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 <p>我们在真正接受上传的action中，通过req中的files获得文件的基本信息，此信息为JSON格式，常用的信息如下。</p>
 <p>originalname - 文件原名<br>path - 上传文件存放的路径<br>size - 文件大小</p>
-<p>更多详细的属性和配置请参见Multer的<a href="https://github.com/expressjs/multer" target="_blank" rel="external">Github</a>主页。</p>
-<p><a href="https://github.com/expressjs/multer" target="_blank" rel="external">Multer</a></p>
+<p>更多详细的属性和配置请参见Multer的<a href="https://github.com/expressjs/multer" target="_blank" rel="noopener">Github</a>主页。</p>
+<p><a href="https://github.com/expressjs/multer" target="_blank" rel="noopener">Multer</a></p>
 <p>文章作者：foreverpx<br>文章原文链接：<a href="http://www.foreverpx.cn/2014/11/27/Express文件上传之Multer">Express文件上传之Multer </a></p>
 
       
@@ -370,9 +366,9 @@ Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也
       
         <div class="post-tags">
           
-            <a href="/tags/Express/" rel="tag">#Express</a>
-          
             <a href="/tags/NodeJs/" rel="tag">#NodeJs</a>
+          
+            <a href="/tags/Express/" rel="tag">#Express</a>
           
         </div>
       
@@ -463,7 +459,7 @@ Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -536,7 +532,7 @@ Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">2.</span> <span class="nav-text">基本用法</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

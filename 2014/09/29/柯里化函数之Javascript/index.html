@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="柯里化函数之Javascript
-定义根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：">
+<meta name="description" content="柯里化函数之Javascript ###定义根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：">
+<meta name="keywords" content="Javascript,柯里化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="柯里化函数之Javascript">
 <meta property="og:url" content="http://www.foreverpx.cn/2014/09/29/柯里化函数之Javascript/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="柯里化函数之Javascript
-定义根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：">
+<meta property="og:description" content="柯里化函数之Javascript ###定义根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2014-09-29T12:41:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="柯里化函数之Javascript">
-<meta name="twitter:description" content="柯里化函数之Javascript
-定义根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：">
+<meta name="twitter:description" content="柯里化函数之Javascript ###定义根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：">
 
 
 
@@ -332,9 +331,9 @@
 
       
         <p><a href="http://www.foreverpx.cn/2014/09/29/柯里化函数之Javascript">柯里化函数之Javascript</a></p>
-<h3 id="定义">定义</h3><p>根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：</p>
+<p>###定义<br>根据定义来说，柯里化就是将一个接收“多个”参数的函数拆分成一个或者许多个接收“单一”参数的函数。定义看起来是比较抽象的，下面来举个例子：</p>
 <a id="more"></a>
-<h3 id="代码">代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concat</span>(<span class="params">str1,str2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str1 + str2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">concat(<span class="string">"forever"</span>,<span class="string">"px"</span>) <span class="comment">// "foreverpx"</span></span><br></pre></td></tr></table></figure>
+<p>###代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concat</span>(<span class="params">str1,str2</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str1 + str2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">concat(<span class="string">"forever"</span>,<span class="string">"px"</span>) <span class="comment">// "foreverpx"</span></span><br></pre></td></tr></table></figure></p>
 <p>不难理解，上面的代码中定义了一个连接字符串的函数，返回连接两个传入参数的字符串。现在我们再看看另一种定义方式：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatCurry</span>(<span class="params">str1</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">str2</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> str1 + str2;		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> concatOne = concatCurry(<span class="string">"forever"</span>);</span><br><span class="line">concatOne(<span class="string">"px"</span>); <span class="comment">//foreverpx</span></span><br></pre></td></tr></table></figure>
 <p>上面的代码中，我们将一开始传入两个参数的函数改装成了一个（或者说是两个）只接收一个参数的函数。</p>
@@ -457,7 +456,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -530,7 +529,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

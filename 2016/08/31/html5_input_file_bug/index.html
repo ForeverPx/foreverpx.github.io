@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="开发中遇到了这样一个问题
-我们在代码中使用了HTML5的input[file]标签去上传图片">
+<meta name="description" content="开发中遇到了这样一个问题 我们在代码中使用了HTML5的input[file]标签去上传图片">
+<meta name="keywords" content="Html5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5_input_file_打开很慢的问题">
 <meta property="og:url" content="http://www.foreverpx.cn/2016/08/31/html5_input_file_bug/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="开发中遇到了这样一个问题
-我们在代码中使用了HTML5的input[file]标签去上传图片">
+<meta property="og:description" content="开发中遇到了这样一个问题 我们在代码中使用了HTML5的input[file]标签去上传图片">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-01T03:40:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML5_input_file_打开很慢的问题">
-<meta name="twitter:description" content="开发中遇到了这样一个问题
-我们在代码中使用了HTML5的input[file]标签去上传图片">
+<meta name="twitter:description" content="开发中遇到了这样一个问题 我们在代码中使用了HTML5的input[file]标签去上传图片">
 
 
 
@@ -334,13 +333,13 @@
         <p>开发中遇到了这样一个问题</p>
 <p>我们在代码中使用了HTML5的input[file]标签去上传图片</p>
 <a id="more"></a>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">name</span>=<span class="value">"file"</span> <span class="attribute">class</span>=<span class="value">"element"</span> <span class="attribute">accept</span>=<span class="value">"image/*"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">class</span>=<span class="string">"element"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>同时，在上面代码中，使用了 accept=”image/*” 去过滤所有非图片的文件。</p>
 <p>但是，在最新版本的chrome（52.0.2743.116 (64-bit)）中，出现了一个很奇特的问题。</p>
 <p>点击input之后，会有一定概率出现文件选择框弹出非常慢的问题，正常情况下，不到1S就能弹出文件选择框。但是慢的时候，可能达到7 ~ 10秒。</p>
 <p>对属性进行逐一排查后，发现是accept=”image/*”的问题。</p>
 <p>将accept=”image/*”改为指定的图片格式就不会出现上述的概率性问题，所以我将上传图片的过滤格式指定为了常用的几种格式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">name</span>=<span class="value">"file"</span> <span class="attribute">class</span>=<span class="value">"element"</span> <span class="attribute">accept</span>=<span class="value">"image/jpg,image/jpeg,image/png"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">class</span>=<span class="string">"element"</span> <span class="attr">accept</span>=<span class="string">"image/jpg,image/jpeg,image/png"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>当然，如果希望过滤所有的非图片格式，那么这个问题还是会存在。原因初步猜想是当设置accept=”image/*”时，浏览器会在弹出框中处理所有的非图片元素，包含所有的图片格式，如果文件较多会增加处理时间，而这个时候可能在这个版本的chrome中有bug（也许是底层没实现好），导致概率性时间增长。</p>
 <p>原文出处：<a href="http://www.foreverpx.cn">http://www.foreverpx.cn</a><br>转</p>
 
@@ -455,7 +454,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

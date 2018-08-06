@@ -86,19 +86,18 @@
 
 
 
-<meta name="description" content="当我们在本地新建一个叫devtest的分支的时候，我们希望他与git远程上的某个分支进行关联。
-假设远程上的那个分支也叫devtest，如果我们直接去pull代码，会报下面的错">
+<meta name="description" content="当我们在本地新建一个叫devtest的分支的时候，我们希望他与git远程上的某个分支进行关联。 假设远程上的那个分支也叫devtest，如果我们直接去pull代码，会报下面的错">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git关联本地与远程分支">
 <meta property="og:url" content="http://www.foreverpx.cn/2016/10/25/git-upstream/index.html">
 <meta property="og:site_name" content="Foreverpx">
-<meta property="og:description" content="当我们在本地新建一个叫devtest的分支的时候，我们希望他与git远程上的某个分支进行关联。
-假设远程上的那个分支也叫devtest，如果我们直接去pull代码，会报下面的错">
+<meta property="og:description" content="当我们在本地新建一个叫devtest的分支的时候，我们希望他与git远程上的某个分支进行关联。 假设远程上的那个分支也叫devtest，如果我们直接去pull代码，会报下面的错">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-10-25T03:16:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git关联本地与远程分支">
-<meta name="twitter:description" content="当我们在本地新建一个叫devtest的分支的时候，我们希望他与git远程上的某个分支进行关联。
-假设远程上的那个分支也叫devtest，如果我们直接去pull代码，会报下面的错">
+<meta name="twitter:description" content="当我们在本地新建一个叫devtest的分支的时候，我们希望他与git远程上的某个分支进行关联。 假设远程上的那个分支也叫devtest，如果我们直接去pull代码，会报下面的错">
 
 
 
@@ -334,12 +333,12 @@
         <p>当我们在本地新建一个叫<strong>devtest</strong>的分支的时候，我们希望他与git远程上的某个分支进行关联。</p>
 <p>假设远程上的那个分支也叫<strong>devtest</strong>，如果我们直接去pull代码，会报下面的错</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">上午<span class="number">10</span>:<span class="number">54</span>:<span class="number">33</span> Branch devtest was created (show balloon)</span><br><span class="line">上午<span class="number">10</span>:<span class="number">54</span>:<span class="number">36</span> Can<span class="string">'t update: no tracked branch</span><br><span class="line">           No tracked branch configured for branch devtest.</span><br><span class="line">           To make your branch track a remote branch call, for example,</span><br><span class="line">           git branch --set-upstream devtest origin/devtest (show balloon)</span></span><br></pre></td></tr></table></figure>
-<p>提示我们需要用 —set-upstream 去关联这两个分支，命令是</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream devtest origin/devtest</span><br></pre></td></tr></table></figure>
-<p>当你执行这句命令之后，他又会提示你<strong>—set-upstream</strong>要换成<strong>—set-upstream-to</strong>命令</p>
-<p>—set-upstream-to 在新版本git中已经替代了 —set-upstream， 并且后面跟随的两个参数要对调一下，如下面命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to origin/devtest devtest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">上午10:54:33 Branch devtest was created (show balloon)</span><br><span class="line">上午10:54:36 Can<span class="string">'t update: no tracked branch</span></span><br><span class="line"><span class="string">           No tracked branch configured for branch devtest.</span></span><br><span class="line"><span class="string">           To make your branch track a remote branch call, for example,</span></span><br><span class="line"><span class="string">           git branch --set-upstream devtest origin/devtest (show balloon)</span></span><br></pre></td></tr></table></figure>
+<p>提示我们需要用 –set-upstream 去关联这两个分支，命令是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="built_in">set</span>-upstream devtest origin/devtest</span><br></pre></td></tr></table></figure>
+<p>当你执行这句命令之后，他又会提示你<strong>–set-upstream</strong>要换成<strong>–set-upstream-to</strong>命令</p>
+<p>–set-upstream-to 在新版本git中已经替代了 –set-upstream， 并且后面跟随的两个参数要对调一下，如下面命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="built_in">set</span>-upstream-to origin/devtest devtest</span><br></pre></td></tr></table></figure>
 <p>远程分支在前，本地分支在后。</p>
 <p>关联之后就可以正常的pull代码了。</p>
 <p>原文出处：<a href="http://www.foreverpx.cn">http://www.foreverpx.cn</a></p>
@@ -456,7 +455,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -92,6 +92,7 @@
 <meta property="og:url" content="http://www.foreverpx.cn/page/6/index.html">
 <meta property="og:site_name" content="Foreverpx">
 <meta property="og:description" content="程序员在囧途">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Foreverpx">
 <meta name="twitter:description" content="程序员在囧途">
@@ -255,6 +256,139 @@
             
               
                 
+                <a class="post-title-link" href="/2015/07/02/Fastclick导致click事件触发两次的问题/" itemprop="url">
+                  Fastclick导致click事件触发两次的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-07-02T19:30:41+08:00" content="Jul 2 2015">
+              Jul 2 2015
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/frontend/" itemprop="url" rel="index">
+                    <span itemprop="name">frontend</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/02/Fastclick导致click事件触发两次的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/02/Fastclick导致click事件触发两次的问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/07/02/Fastclick导致click事件触发两次的问题/" class="leancloud_visitors" data-flag-title="Fastclick导致click事件触发两次的问题">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>我在移动web上使用Fastclick这个库去解决300ms延迟问题，但是在安卓4.2下的webview中引发了另一个比较奇怪的bug。</p>
+<p>在A页面中有个 a button，在B页面中有个 b button，a和b都在同一个position，给a和b都注册一个click事件。a的click事件触发后跳转到B页面。当a被点击后调到B页面，你会发现b按钮的click事件也被触发了。</p>
+<p>没错，事件‘穿透’了两个页面！</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/02/Fastclick导致click事件触发两次的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/05/22/解决Mac java.net Local host name unknown error的方法/" itemprop="url">
                   解决Mac_java.net_Local_host_name_unknown_error的方法
                 </a>
@@ -334,7 +468,7 @@
       
         
           <p>解决Mac java.net Local host name unknown error的方法</p>
-<h1 id="现象">现象</h1><p>在Mac上启动tomcat时，报了如下错误：</p>
+<p>#现象<br>在Mac上启动tomcat时，报了如下错误：</p>
 <p><em>Error: Exception thrown by the agent : java.net.MalformedURLException: Local host name unknown: java.net.UnknownHostException: XXXX: XXXX: nodename nor servname provided, or not known</em></p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/05/22/解决Mac java.net Local host name unknown error的方法/#more" rel="contents">
@@ -466,7 +600,8 @@
 
       
         
-          <h1 id="Nodejs_mkdirP_模块导致CPU占用高的问题">Nodejs mkdirP 模块导致CPU占用高的问题</h1><p>近期将nodejs项目部署到服务器上并启动时，发现node进程的cpu占用率在40%左右，当时表示非常不解，刚启动的服务并没有运行什么需要大量消耗cpu的逻辑，且此时还未有请求发送到服务器端。</p>
+          <p>#Nodejs mkdirP 模块导致CPU占用高的问题</p>
+<p>近期将nodejs项目部署到服务器上并启动时，发现node进程的cpu占用率在40%左右，当时表示非常不解，刚启动的服务并没有运行什么需要大量消耗cpu的逻辑，且此时还未有请求发送到服务器端。</p>
 <p>鉴于这种情况，只能猜测是某段程序在初始化一些东西的时候异常，所以才导致了这种情况。</p>
 <p>经过对代码的排查后，最终锁定出为题的代码块如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">router.use(multer(&#123;</span><br><span class="line">    dest: config.uploadDir,</span><br><span class="line">    limits:&#123;</span><br><span class="line">        fileSize : config.fileSizeLimit, <span class="comment">//bytes , == 50M</span></span><br><span class="line">        files : <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rename:<span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uuid.v1() + <span class="string">"_"</span> + filename + <span class="string">"_"</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;,</span><br><span class="line">    onFileUploadStart: <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(file.originalname + <span class="string">' is starting ...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onError: <span class="function"><span class="keyword">function</span> (<span class="params">error, next</span>) </span>&#123;</span><br><span class="line">        winston.error(error);</span><br><span class="line">        next(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
           <div class="post-more-link text-center">
@@ -602,7 +737,7 @@
           <p><a href="http://www.foreverpx.cn/2015/05/20/CSS3中display:box的用法">#CSS3中display:box的用法</a></p>
 <p>css3 给display属性带来了box这个值，这个新值给开发带来了极大的方便。</p>
 <p>其中的一个场景如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'outer'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'a1'</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'a2'</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">'a3'</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'outer'</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'a1'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'a2'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'a3'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>假如我们想要使得内部的123元素水平以不同的比例分割outer所占的空间，以往的做法我们可能会让123元素浮动或者设置display属性为inline-block，然后再给width属性设置宽度百分比去分割outer。</p>
 <p>使用display:box后可以这样实现：</p>
           <div class="post-more-link text-center">
@@ -768,139 +903,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/01/14/IntellijIDEA使用GITPush的问题/" itemprop="url">
-                  IntellijIDEA使用GIT Push的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-01-14T17:11:23+08:00" content="Jan 14 2015">
-              Jan 14 2015
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">frontend</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/01/14/IntellijIDEA使用GITPush的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/14/IntellijIDEA使用GITPush的问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/01/14/IntellijIDEA使用GITPush的问题/" class="leancloud_visitors" data-flag-title="IntellijIDEA使用GIT Push的问题">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>​IntellijIDEA使用GIT Push的问题</p>
-<p>前不久从Eclipse转到了Intellij，发现Intellij真是一个非常强大的IDE，基于jetbrains，另一个类似的是webstorm，一个前端开发的利器。</p>
-<p>今天在IDEA中使用git时，git commit没问题，但是git push处于一直执行的状态，IDEA下方的进度条也是一直在跑，过了很久也没提交成功，无奈之下只有结束掉git进程。后来打开IDEA左下角中的<code>version control console</code>栏，发现里面报了如下错误</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/01/14/IntellijIDEA使用GITPush的问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -946,7 +948,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
