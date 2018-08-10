@@ -75,6 +75,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Nodejs mkdirP 模块导致CPU占用高的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/" class="article-date">
+  <time datetime="2015-05-21T11:56:50.000Z" itemprop="datePublished">May 21 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/frontend/">frontend</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/">模块导致CPU占用高的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Nodejs mkdirP 模块导致CPU占用高的问题</p>
+<p>近期将nodejs项目部署到服务器上并启动时，发现node进程的cpu占用率在40%左右，当时表示非常不解，刚启动的服务并没有运行什么需要大量消耗cpu的逻辑，且此时还未有请求发送到服务器端。</p>
+<p>鉴于这种情况，只能猜测是某段程序在初始化一些东西的时候异常，所以才导致了这种情况。</p>
+<p>经过对代码的排查后，最终锁定出为题的代码块如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">router.use(multer(&#123;</span><br><span class="line">    dest: config.uploadDir,</span><br><span class="line">    limits:&#123;</span><br><span class="line">        fileSize : config.fileSizeLimit, <span class="comment">//bytes , == 50M</span></span><br><span class="line">        files : <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rename:<span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uuid.v1() + <span class="string">"_"</span> + filename + <span class="string">"_"</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;,</span><br><span class="line">    onFileUploadStart: <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(file.originalname + <span class="string">' is starting ...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onError: <span class="function"><span class="keyword">function</span> (<span class="params">error, next</span>) </span>&#123;</span><br><span class="line">        winston.error(error);</span><br><span class="line">        next(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.foreverpx.cn/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/" data-id="cjkns0i56000u7stck376rwys" class="article-share-link">分享</a>
+      
+        <a href="http://www.foreverpx.cn/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-CSS3中display box的用法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/05/20/CSS3中display box的用法/" class="article-date">
@@ -115,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2015/05/20/CSS3中display box的用法/" data-id="cjknjy6fy0001l4tcakiljltj" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2015/05/20/CSS3中display box的用法/" data-id="cjkns0i4000017stckuihmpdj" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2015/05/20/CSS3中display box的用法/#ds-thread" class="article-comment-link">留言</a>
       
@@ -167,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2015/03/04/Java中Spring删除cookie/" data-id="cjknjy6h4000ql4tc9e93h9hl" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2015/03/04/Java中Spring删除cookie/" data-id="cjkns0i4w000i7stcupsvcsxb" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2015/03/04/Java中Spring删除cookie/#ds-thread" class="article-comment-link">留言</a>
       
@@ -220,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2015/01/14/IntellijIDEA使用GITPush的问题/" data-id="cjknjy6gx000il4tc9fp6zorg" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2015/01/14/IntellijIDEA使用GITPush的问题/" data-id="cjkns0i4z000k7stcozd3l1sd" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2015/01/14/IntellijIDEA使用GITPush的问题/#ds-thread" class="article-comment-link">留言</a>
       
@@ -273,66 +327,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2014/12/25/Highcharts使用phantomjs导出截图/" data-id="cjknjy6gt000el4tc8nro77zl" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2014/12/25/Highcharts使用phantomjs导出截图/" data-id="cjkns0i52000n7stcld209mmk" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2014/12/25/Highcharts使用phantomjs导出截图/#ds-thread" class="article-comment-link">留言</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Highcharts，Nodejs/">Highcharts，Nodejs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Linux中npm出现npmlog找不到的解决方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/" class="article-date">
-  <time datetime="2014-11-29T03:10:40.000Z" itemprop="datePublished">Nov 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/">Linux中npm出现npmlog找不到的解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​<a href="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法">Linux中npm出现npmlog找不到的解决方法</a></p>
-<p>##描述</p>
-<p>今天在对nodejs项目进行服务器迁移的时，在新的linux服务器上输入 npm -v 命令后报 “cannot find module ‘npmlog’….”的错误。找到的原因是拷贝过去的bin目录下的<code>npm</code>文件并没有链接到module目录下的<code>npm-cli.js</code>文件，所以导致在执行 <code>npm -v</code> 命令时，路径问题导致<code>npmlog</code>模块无法找到。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法/" data-id="cjknjy6h1000nl4tcrr9uqaoe" class="article-share-link">分享</a>
-      
-        <a href="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Npm/">Npm</a></li></ul>
 
     </footer>
   </div>
@@ -368,6 +369,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/">安卓webview显示网页字体模糊的问题</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/10/关于重构/">关于重构</a>
           </li>
         
@@ -383,10 +388,6 @@
             <a href="/2018/07/05/gmtc/">遨游GMTC</a>
           </li>
         
-          <li>
-            <a href="/2017/08/07/React_setState/">React 之 setState</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -396,7 +397,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
