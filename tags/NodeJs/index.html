@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: NodeJs | Foreverpx</title>
+  <title>Tag: Nodejs | Foreverpx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="程序员在囧途">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Foreverpx">
-<meta property="og:url" content="http://www.foreverpx.cn/tags/NodeJs/index.html">
+<meta property="og:url" content="http://www.foreverpx.cn/tags/Nodejs/index.html">
 <meta property="og:site_name" content="Foreverpx">
 <meta property="og:description" content="程序员在囧途">
 <meta property="og:locale" content="zh-Hans">
@@ -75,10 +75,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Nodejs异步回调之异常" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Nodejs检测端口占用问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/07/03/Nodejs异步回调之异常/" class="article-date">
-  <time datetime="2017-07-03T02:47:09.000Z" itemprop="datePublished">Jul 3 2017</time>
+    <a href="/2018/08/04/Nodejs检测端口占用问题/" class="article-date">
+  <time datetime="2018-08-04T04:11:24.000Z" itemprop="datePublished">Aug 4 2018</time>
 </a>
     
   <div class="article-category">
@@ -93,7 +93,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/03/Nodejs异步回调之异常/">Nodejs 异步回调之异常</a>
+      <a class="article-title" href="/2018/08/04/Nodejs检测端口占用问题/">Nodejs检测端口占用问题</a>
     </h1>
   
 
@@ -101,26 +101,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目前我们项目的Nodejs异常是通过express next 到 errorhandler 中间件去处理的，<br>原本以为此方法可以捕获到所有的异常，但事实发现并非如此。</p>
-<p>下面以一个异常举例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">req.get(<span class="string">''</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="literal">undefined</span>.b; <span class="comment">// 产生了一个exception</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">req.use(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;req, res, next&#125;&#123;</span><br><span class="line">    next();  <span class="comment">//最终到 errorhandler中间件中处理</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>上面这个例子中，我们认为的制造了一个excepteion，同时我们期望的结果是异常能进入到我们写好的handler中去做处理。</p>
-<p>从上面代码的运行结果来看，也符合我们的预期。</p>
+        <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>在Windows机器上装了我们的PC端（Electron）应用（TcpServer默认监听20000端口），随后启动应用，发现安卓端登录学生账号后发现无法正常连接pc端（Tcp通信）。</p>
+<h2 id="系统环境："><a href="#系统环境：" class="headerlink" title="系统环境："></a>系统环境：</h2><p>Win7 64位</p>
         
           <p class="article-more-link">
-            <a href="/2017/07/03/Nodejs异步回调之异常/#more">继续阅读全文 »</a>
+            <a href="/2018/08/04/Nodejs检测端口占用问题/#more">继续阅读全文 »</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2017/07/03/Nodejs异步回调之异常/" data-id="cjknjwcqj0010fotc9zjet01n" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/" data-id="cjknjy6hb0013l4tch88a6fwy" class="article-share-link">分享</a>
       
-        <a href="http://www.foreverpx.cn/2017/07/03/Nodejs异步回调之异常/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nodejs/">Nodejs</a></li></ul>
 
     </footer>
   </div>
@@ -130,10 +127,10 @@
 
 
   
-    <article id="post-Nodejs mkdirP 模块导致CPU占用高的问题" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nightmare" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/" class="article-date">
-  <time datetime="2015-05-21T11:56:50.000Z" itemprop="datePublished">May 21 2015</time>
+    <a href="/2015/10/20/nightmare/" class="article-date">
+  <time datetime="2015-10-20T08:29:34.000Z" itemprop="datePublished">Oct 20 2015</time>
 </a>
     
   <div class="article-category">
@@ -148,7 +145,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/">模块导致CPU占用高的问题</a>
+      <a class="article-title" href="/2015/10/20/nightmare/">Nightmare 浏览器自动化工具</a>
     </h1>
   
 
@@ -156,131 +153,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#Nodejs mkdirP 模块导致CPU占用高的问题</p>
-<p>近期将nodejs项目部署到服务器上并启动时，发现node进程的cpu占用率在40%左右，当时表示非常不解，刚启动的服务并没有运行什么需要大量消耗cpu的逻辑，且此时还未有请求发送到服务器端。</p>
-<p>鉴于这种情况，只能猜测是某段程序在初始化一些东西的时候异常，所以才导致了这种情况。</p>
-<p>经过对代码的排查后，最终锁定出为题的代码块如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">router.use(multer(&#123;</span><br><span class="line">    dest: config.uploadDir,</span><br><span class="line">    limits:&#123;</span><br><span class="line">        fileSize : config.fileSizeLimit, <span class="comment">//bytes , == 50M</span></span><br><span class="line">        files : <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    rename:<span class="function"><span class="keyword">function</span>(<span class="params">fieldname, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uuid.v1() + <span class="string">"_"</span> + filename + <span class="string">"_"</span> + <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;,</span><br><span class="line">    onFileUploadStart: <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(file.originalname + <span class="string">' is starting ...'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    onError: <span class="function"><span class="keyword">function</span> (<span class="params">error, next</span>) </span>&#123;</span><br><span class="line">        winston.error(error);</span><br><span class="line">        next(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+        <p><code>nightmare</code>是一个高级的浏览器自动化代码库。<br>它的主要目标是使用一些简单的方法就能自动的模拟用户日常在浏览器中的操作。<br>比如你平时打开浏览器，然后在搜索框中输入内容，再点击搜索按钮进行搜索。<br><code>nightmare</code>能自动执行上述步骤，并拿到执行结果，也就是搜索结果。<br>通过它可以轻松实现自动化测试。</p>
         
           <p class="article-more-link">
-            <a href="/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#more">继续阅读全文 »</a>
+            <a href="/2015/10/20/nightmare/#more">继续阅读全文 »</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/" data-id="cjknjwcqh000xfotc21txw3ya" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2015/10/20/nightmare/" data-id="cjknjy6ig002ql4tcy3lnhy99" class="article-share-link">分享</a>
       
-        <a href="http://www.foreverpx.cn/2015/05/21/Nodejs mkdirP 模块导致CPU占用高的问题/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Linux中npm出现npmlog找不到的解决方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/" class="article-date">
-  <time datetime="2014-11-29T03:10:40.000Z" itemprop="datePublished">Nov 29 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/">Linux中npm出现npmlog找不到的解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​<a href="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法">Linux中npm出现npmlog找不到的解决方法</a></p>
-<p>##描述</p>
-<p>今天在对nodejs项目进行服务器迁移的时，在新的linux服务器上输入 npm -v 命令后报 “cannot find module ‘npmlog’….”的错误。找到的原因是拷贝过去的bin目录下的<code>npm</code>文件并没有链接到module目录下的<code>npm-cli.js</code>文件，所以导致在执行 <code>npm -v</code> 命令时，路径问题导致<code>npmlog</code>模块无法找到。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/29/Linux中npm出现npmlog找不到的解决方法/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法/" data-id="cjknjwcqd000rfotcwwyplwc2" class="article-share-link">分享</a>
-      
-        <a href="http://www.foreverpx.cn/2014/11/29/Linux中npm出现npmlog找不到的解决方法/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://www.foreverpx.cn/2015/10/20/nightmare/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Npm/">Npm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Express文件上传之Multer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/11/27/Express文件上传之Multer/" class="article-date">
-  <time datetime="2014-11-27T10:59:54.000Z" itemprop="datePublished">Nov 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/27/Express文件上传之Multer/">Express文件上传之Multer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​Express文件上传之Multer</p>
-<p>Multer是一个nodejs中间件，用来处理http提交multipart/form-data，也就是文件上传。它是在<a href="https://github.com/mscdex/busboy" target="_blank" rel="noopener">busboy</a>的基础上开发的。</p>
-<p>在我看来，Multer是众多上传中间件里面使用起来最优雅的，且能满足大部分的上传要求。API也相对来说较为直观和简单。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/11/27/Express文件上传之Multer/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2014/11/27/Express文件上传之Multer/" data-id="cjknjwcp60001fotcj1vrb0y0" class="article-share-link">分享</a>
-      
-        <a href="http://www.foreverpx.cn/2014/11/27/Express文件上传之Multer/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nodejs/">Nodejs</a></li></ul>
 
     </footer>
   </div>
