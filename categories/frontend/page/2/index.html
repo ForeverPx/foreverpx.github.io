@@ -75,6 +75,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Nodejs异步回调之异常" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/03/Nodejs异步回调之异常/" class="article-date">
+  <time datetime="2017-07-03T02:47:09.000Z" itemprop="datePublished">Jul 3 2017</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/frontend/">frontend</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/03/Nodejs异步回调之异常/">Nodejs 异步回调之异常</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目前我们项目的Nodejs异常是通过express next 到 errorhandler 中间件去处理的，<br>原本以为此方法可以捕获到所有的异常，但事实发现并非如此。</p>
+<p>下面以一个异常举例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">req.get(<span class="string">''</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="literal">undefined</span>.b; <span class="comment">// 产生了一个exception</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">req.use(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;req, res, next&#125;&#123;</span><br><span class="line">    next();  <span class="comment">//最终到 errorhandler中间件中处理</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>上面这个例子中，我们认为的制造了一个excepteion，同时我们期望的结果是异常能进入到我们写好的handler中去做处理。</p>
+<p>从上面代码的运行结果来看，也符合我们的预期。</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/03/Nodejs异步回调之异常/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.foreverpx.cn/2017/07/03/Nodejs异步回调之异常/" data-id="cjl4iijoc000uxktcxrirl8tz" class="article-share-link">分享</a>
+      
+        <a href="http://www.foreverpx.cn/2017/07/03/Nodejs异步回调之异常/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-echarts_webpack_ie" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/04/echarts_webpack_ie/" class="article-date">
@@ -112,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2017/03/04/echarts_webpack_ie/" data-id="cjkns0i5p001o7stccflcwdgj" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2017/03/04/echarts_webpack_ie/" data-id="cjl4iijp60029xktcg1bqcdqd" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2017/03/04/echarts_webpack_ie/#ds-thread" class="article-comment-link">留言</a>
       
@@ -166,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2017/02/18/zepto跨域ajax无法带cookie的问题/" data-id="cjkns0i6w003f7stcg40fg6ni" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2017/02/18/zepto跨域ajax无法带cookie的问题/" data-id="cjl4iijrd004uxktckl3pvgxu" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2017/02/18/zepto跨域ajax无法带cookie的问题/#ds-thread" class="article-comment-link">留言</a>
       
@@ -218,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2016/08/31/html5_input_file_bug/" data-id="cjkns0i68002b7stcwighk3oe" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2016/08/31/html5_input_file_bug/" data-id="cjl4iijp20022xktc9lz0mw64" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2016/08/31/html5_input_file_bug/#ds-thread" class="article-comment-link">留言</a>
       
@@ -269,64 +324,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2016/06/22/cross_content_type/" data-id="cjkns0i5l001j7stc4fer642n" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2016/06/22/cross_content_type/" data-id="cjl4iijol0019xktcv563zijv" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2016/06/22/cross_content_type/#ds-thread" class="article-comment-link">留言</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-hole-in-localstorage" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/05/26/hole-in-localstorage/" class="article-date">
-  <time datetime="2016-05-26T09:26:47.000Z" itemprop="datePublished">May 26 2016</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/26/hole-in-localstorage/">Localstorage使用不严谨之坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天上线新版本后，发现极个别“老”用户在微信浏览器中无法打开我们网站的首页。在经过一番线上文件代理替<br>换后，终于发现了问题所在。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/05/26/hole-in-localstorage/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2016/05/26/hole-in-localstorage/" data-id="cjkns0i6600297stcjtk9i86m" class="article-share-link">分享</a>
-      
-        <a href="http://www.foreverpx.cn/2016/05/26/hole-in-localstorage/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Localstorage/">Localstorage</a></li></ul>
 
     </footer>
   </div>
@@ -354,7 +358,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html5/">html5</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/live/">live</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/manage/">manage</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html5/">html5</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/live/">live</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/manage/">manage</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -367,6 +371,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/08/22/webpack构建UEditor/">Webpack构建UEditor</a>
+          </li>
         
           <li>
             <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/">安卓webview显示网页字体模糊的问题</a>
@@ -382,10 +390,6 @@
         
           <li>
             <a href="/2018/08/04/Nodejs检测端口占用问题/">Nodejs检测端口占用问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/05/gmtc/">遨游GMTC</a>
           </li>
         
       </ul>

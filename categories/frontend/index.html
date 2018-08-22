@@ -75,6 +75,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-webpack构建UEditor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/22/webpack构建UEditor/" class="article-date">
+  <time datetime="2018-08-22T09:14:54.000Z" itemprop="datePublished">Aug 22 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/frontend/">frontend</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/22/webpack构建UEditor/">Webpack构建UEditor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于种种原因，我们选择了Ueditor作为我们的富文本编辑器选型。</p>
+<p>Ueditor不支持模块化，所以无法在代码中使用import去引入。一开始我们在项目中是将Ueditor的js文件直接通过script标签引入，在React的代码里直接使用window.UE去使用编辑器。但是这就有一个问题，我们对UE的源码进行了改动，加入了定制化的功能。而直接引入的UE文件在浏览器是有缓存的，我们每次改动都要清除缓存才能生效。</p>
+<p>我们要解决缓存这个问题，webpack配置就必须满足以下条件：</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/22/webpack构建UEditor/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/" data-id="cjl4iijr7004lxktcfq2pk77y" class="article-share-link">分享</a>
+      
+        <a href="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Css/">Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UEditor/">UEditor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-安卓webview显示网页字体模糊的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/" class="article-date">
@@ -110,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/08/10/安卓webview显示网页字体模糊的问题/" data-id="cjkns0i78003u7stc8kbhxa23" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/10/安卓webview显示网页字体模糊的问题/" data-id="cjl4iijro0058xktc9onpsi7a" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/08/10/安卓webview显示网页字体模糊的问题/#ds-thread" class="article-comment-link">留言</a>
       
@@ -162,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/" data-id="cjkns0i5u001v7stcipdvsbu8" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/" data-id="cjl4iijoa000sxktcv5jdyb3b" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/#ds-thread" class="article-comment-link">留言</a>
       
@@ -213,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/07/05/gmtc/" data-id="cjkns0i5x001z7stc6vgr2gth" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/07/05/gmtc/" data-id="cjl4iijow001sxktc0s8ajae7" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/07/05/gmtc/#ds-thread" class="article-comment-link">留言</a>
       
@@ -266,68 +319,13 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2017/08/07/React_setState/" data-id="cjkns0i5d00157stcki1u4ul5" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2017/08/07/React_setState/" data-id="cjl4iijoh0012xktcyi590v4x" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2017/08/07/React_setState/#ds-thread" class="article-comment-link">留言</a>
       
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Nodejs异步回调之异常" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/03/Nodejs异步回调之异常/" class="article-date">
-  <time datetime="2017-07-03T02:47:09.000Z" itemprop="datePublished">Jul 3 2017</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/frontend/">frontend</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/03/Nodejs异步回调之异常/">Nodejs 异步回调之异常</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>目前我们项目的Nodejs异常是通过express next 到 errorhandler 中间件去处理的，<br>原本以为此方法可以捕获到所有的异常，但事实发现并非如此。</p>
-<p>下面以一个异常举例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">req.get(<span class="string">''</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="literal">undefined</span>.b; <span class="comment">// 产生了一个exception</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">req.use(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;req, res, next&#125;&#123;</span><br><span class="line">    next();  <span class="comment">//最终到 errorhandler中间件中处理</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>上面这个例子中，我们认为的制造了一个excepteion，同时我们期望的结果是异常能进入到我们写好的handler中去做处理。</p>
-<p>从上面代码的运行结果来看，也符合我们的预期。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/03/Nodejs异步回调之异常/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2017/07/03/Nodejs异步回调之异常/" data-id="cjkns0i5b00107stclexghh7k" class="article-share-link">分享</a>
-      
-        <a href="http://www.foreverpx.cn/2017/07/03/Nodejs异步回调之异常/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJs/">NodeJs</a></li></ul>
 
     </footer>
   </div>
@@ -355,7 +353,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title categories">分类</h3>
     <div class="widget" id="categories">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html5/">html5</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/live/">live</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/manage/">manage</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/frontend/">frontend</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html5/">html5</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/live/">live</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/manage/">manage</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">server</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -368,6 +366,10 @@
     <h3 class="widget-title recent-posts">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/08/22/webpack构建UEditor/">Webpack构建UEditor</a>
+          </li>
         
           <li>
             <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/">安卓webview显示网页字体模糊的问题</a>
@@ -383,10 +385,6 @@
         
           <li>
             <a href="/2018/08/04/Nodejs检测端口占用问题/">Nodejs检测端口占用问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/05/gmtc/">遨游GMTC</a>
           </li>
         
       </ul>

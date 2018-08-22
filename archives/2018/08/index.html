@@ -75,6 +75,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-webpack构建UEditor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/22/webpack构建UEditor/" class="article-date">
+  <time datetime="2018-08-22T09:14:54.000Z" itemprop="datePublished">Aug 22 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/frontend/">frontend</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/22/webpack构建UEditor/">Webpack构建UEditor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于种种原因，我们选择了Ueditor作为我们的富文本编辑器选型。</p>
+<p>Ueditor不支持模块化，所以无法在代码中使用import去引入。一开始我们在项目中是将Ueditor的js文件直接通过script标签引入，在React的代码里直接使用window.UE去使用编辑器。但是这就有一个问题，我们对UE的源码进行了改动，加入了定制化的功能。而直接引入的UE文件在浏览器是有缓存的，我们每次改动都要清除缓存才能生效。</p>
+<p>我们要解决缓存这个问题，webpack配置就必须满足以下条件：</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/22/webpack构建UEditor/#more">继续阅读全文 »</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/" data-id="cjl4iijr7004lxktcfq2pk77y" class="article-share-link">分享</a>
+      
+        <a href="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Css/">Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UEditor/">UEditor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-安卓webview显示网页字体模糊的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/" class="article-date">
@@ -110,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/08/10/安卓webview显示网页字体模糊的问题/" data-id="cjkns0i78003u7stc8kbhxa23" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/10/安卓webview显示网页字体模糊的问题/" data-id="cjl4iijro0058xktc9onpsi7a" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/08/10/安卓webview显示网页字体模糊的问题/#ds-thread" class="article-comment-link">留言</a>
       
@@ -161,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/08/10/关于重构/" data-id="cjkns0i6y003i7stcmtg5v1zn" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/10/关于重构/" data-id="cjl4iijrg004xxktc5hxhy33w" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/08/10/关于重构/#ds-thread" class="article-comment-link">留言</a>
       
@@ -215,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/08/06/期望值管理/" data-id="cjkns0i7b003y7stcz3zjjwvi" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/06/期望值管理/" data-id="cjl4iijrk0055xktcm1723q4w" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/08/06/期望值管理/#ds-thread" class="article-comment-link">留言</a>
       
@@ -267,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/" data-id="cjkns0i5u001v7stcipdvsbu8" class="article-share-link">分享</a>
+      <a data-url="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/" data-id="cjl4iijoa000sxktcv5jdyb3b" class="article-share-link">分享</a>
       
         <a href="http://www.foreverpx.cn/2018/08/04/Nodejs检测端口占用问题/#ds-thread" class="article-comment-link">留言</a>
       
@@ -305,6 +358,10 @@
       <ul>
         
           <li>
+            <a href="/2018/08/22/webpack构建UEditor/">Webpack构建UEditor</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/">安卓webview显示网页字体模糊的问题</a>
           </li>
         
@@ -320,10 +377,6 @@
             <a href="/2018/08/04/Nodejs检测端口占用问题/">Nodejs检测端口占用问题</a>
           </li>
         
-          <li>
-            <a href="/2018/07/05/gmtc/">遨游GMTC</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -333,7 +386,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title archive">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 

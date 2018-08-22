@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Webpack构建UEditor | Foreverpx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于种种原因，我们选择了Ueditor作为我们的富文本编辑器选型。 Ueditor不支持模块化，所以无法在代码中使用import去引入。一开始我们在项目中是将Ueditor的js文件直接通过script标签引入，在React的代码里直接使用window.UE去使用编辑器。但是这就有一个问题，我们对UE的源码进行了改动，加入了定制化的功能。而直接引入的UE文件在浏览器是有缓存的，我们每次改动都要清除">
+<meta name="keywords" content="Css,Javascript,Webpack,UEditor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack构建UEditor">
+<meta property="og:url" content="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/index.html">
+<meta property="og:site_name" content="Foreverpx">
+<meta property="og:description" content="由于种种原因，我们选择了Ueditor作为我们的富文本编辑器选型。 Ueditor不支持模块化，所以无法在代码中使用import去引入。一开始我们在项目中是将Ueditor的js文件直接通过script标签引入，在React的代码里直接使用window.UE去使用编辑器。但是这就有一个问题，我们对UE的源码进行了改动，加入了定制化的功能。而直接引入的UE文件在浏览器是有缓存的，我们每次改动都要清除">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-22T02:21:28.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack构建UEditor">
+<meta name="twitter:description" content="由于种种原因，我们选择了Ueditor作为我们的富文本编辑器选型。 Ueditor不支持模块化，所以无法在代码中使用import去引入。一开始我们在项目中是将Ueditor的js文件直接通过script标签引入，在React的代码里直接使用window.UE去使用编辑器。但是这就有一个问题，我们对UE的源码进行了改动，加入了定制化的功能。而直接引入的UE文件在浏览器是有缓存的，我们每次改动都要清除">
+  
+    <link rel="alternate" href="/rss2.xml" title="Foreverpx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/rss2.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.foreverpx.cn"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">home</a>
+        
+          <a class="main-nav-link" href="/categories">categories</a>
+        
+          <a class="main-nav-link" href="/archives">archives</a>
+        
+          <a class="main-nav-link" href="/tags">tags</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Foreverpx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">程序员在囧途</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-webpack构建UEditor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/22/webpack构建UEditor/" class="article-date">
+  <time datetime="2018-08-22T09:14:54.000Z" itemprop="datePublished">Aug 22 2018</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/frontend/">frontend</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Webpack构建UEditor
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>由于种种原因，我们选择了Ueditor作为我们的富文本编辑器选型。</p>
+<p>Ueditor不支持模块化，所以无法在代码中使用import去引入。一开始我们在项目中是将Ueditor的js文件直接通过script标签引入，在React的代码里直接使用window.UE去使用编辑器。但是这就有一个问题，我们对UE的源码进行了改动，加入了定制化的功能。而直接引入的UE文件在浏览器是有缓存的，我们每次改动都要清除缓存才能生效。</p>
+<p>我们要解决缓存这个问题，webpack配置就必须满足以下条件：</p>
+<a id="more"></a>
+<ol>
+<li>每次改动代码后，能自动给UE的文件名加hash</li>
+<li>能自动插入html模板文件并在主入口文件加载之前加载完成</li>
+</ol>
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>为了能让UE的文件进入打包流程，我们将它作为一个新的入口文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> entry = &#123;</span><br><span class="line">    main: [<span class="string">'babel-polyfill'</span>, <span class="string">'./src/main.js'</span>],</span><br><span class="line">    ueditor_config: [<span class="string">'./src/common/UEditor/ueditor.config.js'</span>],</span><br><span class="line">    ueditor_all: [<span class="string">'./src/common/UEditor/ueditor.all.js'</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">    template: <span class="string">`./src/app/<span class="subst">$&#123;key&#125;</span>/templates/<span class="subst">$&#123;filename&#125;</span>`</span>,</span><br><span class="line">    filename: <span class="string">`../view/<span class="subst">$&#123;targetHtml&#125;</span>`</span>,</span><br><span class="line">    hash: <span class="literal">true</span>,</span><br><span class="line">    chunks: [ueditor_all, ueditor_config, main]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>按上面的配置构建完成之后，会发现效果并不是我们想要的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/public/main.xxxx.js&quot;&gt;&lt;/script&gt; </span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/public/ueditor.config.xxxx.js&quot;&gt;&lt;/script&gt; </span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/public/ueditor.all.xxxx.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>main.js在UE的前面，这样main中使用window.UE就会报错。显然，我们需要一种方式来让这个顺序符合我们的预期。</p>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>HtmlWebpackPlugin的chunksSortMode属性是用来控制插入模板html的script标签的顺序的，默认是auto，会根据webpack给每个chunk生成的id去排序，在entry中排的越前的，id就越小，那在html中就排在前面。所以这里我们第一种解决方案是，调换一下entry顺序<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> entry = &#123;</span><br><span class="line">	ueditor_config: [<span class="string">'./src/common/UEditor/ueditor.config.js'</span>],</span><br><span class="line">    ueditor_all: [<span class="string">'./src/common/UEditor/ueditor.all.js'</span>]</span><br><span class="line">    main: [<span class="string">'babel-polyfill'</span>, <span class="string">'./src/main.js'</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>但是这个方法有缺陷，当项目中有多个模板html需要引用入口的时候，在entry里面去控制这个排序就会遇到冲突的情况，不够灵活。<br>所以我们把顺序的控制权下方到每个<strong>HtmlWebpackPlugin</strong>中，通过把<strong>chunksSortMode</strong>设置为<strong>manual</strong>，按chunks的顺序去排序，例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">	...</span><br><span class="line">    chunks: [ueditor_config, ueditor_all, main]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样，生成的html中srcipt就会是下面的顺序<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/public/ueditor.config.xxxx.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/public/ueditor.all.xxxx.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/public/main.xxxx.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>现在看上去顺序是ok了，但是运行的时候，我们发现控制台报错<br><strong>regeneratorRuntime is not defined</strong></p>
+<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><p>第二步最后出现的错误，是我们使用的ES6新API没有被转换导致的。由于之前我们只是在main的入口加了babel-polyfill，而main又是在UE的后面加载的，所以导致了报错。所以需要将babel-polyfill放到入口第一个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> entry = &#123;</span><br><span class="line">	ueditor_config: [<span class="string">'babel-polyfill'</span>, <span class="string">'./src/common/UEditor/ueditor.config.js'</span>],</span><br><span class="line">    ueditor_all: [<span class="string">'./src/common/UEditor/ueditor.all.js'</span>]</span><br><span class="line">    main: [<span class="string">'./src/main.js'</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>继续运行后，第二步的错误已经解决了。不过，新的错误又出现了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TypeError: <span class="string">'caller'</span>, <span class="string">'callee'</span>, and <span class="string">'arguments'</span> </span><br><span class="line">properties may not be accessed on strict mode <span class="built_in">functions</span> or the arguments objects <span class="keyword">for</span> calls to them</span><br></pre></td></tr></table></figure></p>
+<h2 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h2><p>bable会默认给编译的js加上use strict;<br>严格模式下<strong>caller</strong>、<strong>callee</strong> 和<strong>arguments</strong> 是不能使用的，追溯到UE的源码中，我们发现里面大量使用了<strong>arguments.callee</strong>这种写法。<br>直接把源码都改了不现实，所以只能通过配置让bable忽略这个文件。在.babel中我们加入如下配置，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"presets"</span>: [</span><br><span class="line">    <span class="string">"react"</span></span><br><span class="line"> ],</span><br><span class="line"> <span class="string">"ignore"</span>: [</span><br><span class="line">     <span class="string">"./src/common/UEditor/ueditor.all.js"</span></span><br><span class="line"> ],</span><br></pre></td></tr></table></figure></p>
+<p>到此webpack就能按照我们的预期构建UE模块了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/" data-id="cjl4iijr7004lxktcfq2pk77y" class="article-share-link">分享</a>
+      
+        <a href="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Css/">Css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UEditor/">UEditor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/10/安卓webview显示网页字体模糊的问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">安卓webview显示网页字体模糊的问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/08/22/webpack构建UEditor/"
+           data-title="Webpack构建UEditor" data-url="http://www.foreverpx.cn/2018/08/22/webpack构建UEditor/">
+      </div>
+      
+     
+       
+       
+      
+      
+           <div id="gitment_comments"></div>
+    
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步"><span class="toc-number">1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步"><span class="toc-number">2.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步"><span class="toc-number">3.</span> <span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步"><span class="toc-number">4.</span> <span class="toc-text">第四步</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Foreverpx&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;1315592944@qq.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">home</a>
+  
+    <a href="/categories" class="mobile-nav-link">categories</a>
+  
+    <a href="/archives" class="mobile-nav-link">archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">tags</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script> 
+  <script>
+  var gitment = new Gitment({
+    id:'Wed Aug 22 2018 17:14:54 GMT+0800', // 可选。默认为 location.href
+    owner: 'ForeverPx',
+    repo: 'foreverpx.github.io',
+    oauth: {
+    client_id: '1ec8a99a5b94434d908d',
+    client_secret: '24f5bfb9a47103f319634dd779844a1521d64b3d',
+    }
+  })
+  gitment.render(document.getElementById("gitment_comments"))
+</script>
+
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>
